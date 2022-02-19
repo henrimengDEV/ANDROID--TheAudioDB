@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="common_margin">16dp</dimen>
+    <dimen name="sub_title">25sp</dimen>
+    <dimen name="title">40sp</dimen>
+    <dimen name="semi_common_margin">8dp</dimen>
+    <dimen name="search_bar">40dp</dimen>
+    <dimen name="vignette">40dp</dimen>
+</resources>

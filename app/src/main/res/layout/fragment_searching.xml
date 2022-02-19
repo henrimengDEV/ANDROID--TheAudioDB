@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/app_guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/app_guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <LinearLayout
+        android:id="@+id/ranking_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@id/app_guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/searching_header_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_bar"
+            android:background="@drawable/rectangle_rounded" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/searching_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="@dimen/common_margin"
+        android:background="@color/grey_200"
+        app:layout_constraintTop_toBottomOf="@id/ranking_header" />
+
+    <LinearLayout
+        android:id="@+id/searching_body"
+        android:layout_width="374dp"
+        android:layout_height="730dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@id/app_guideline_left"
+        app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
+        app:layout_constraintTop_toBottomOf="@id/searching_separator">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_margin" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/semi_common_margin"
+            android:text="@string/searching_body_artists"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/semi_common_margin"
+            android:background="@color/grey_200" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searching_artists"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/fragment_artist" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_margin" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/semi_common_margin"
+            android:text="@string/searching_body_albums"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sub_title" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/semi_common_margin"
+            android:background="@color/grey_200" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/searching_albums"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/fragment_artist" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

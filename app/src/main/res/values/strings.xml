@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ANDROID--TheAudioDB</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ranking_header_title">Classements</string>
+    <string name="placeholder">placeHolder</string>
+    <string name="searching_header_title">Rechercher</string>
+    <string name="searching_body_artists">Artistes</string>
+    <string name="searching_body_albums">Albums</string>
+    <string name="favorites_header_title">Favoris</string>
+    <string name="favorites_body_artists">Artistes</string>
+    <string name="favorites_body_albums">Albums</string>
+    <string name="favorites_header_description"><![CDATA[Mes artistes & albums]]></string>
+    <string name="tab_albums">Albums</string>
+    <string name="tab_title">Titres</string>
+</resources>

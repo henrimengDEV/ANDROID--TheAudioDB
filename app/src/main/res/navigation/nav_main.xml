@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/itemFragment">
+
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.android__theaudiodb.exposition.ranking.RankingFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_ranking" />
+    <fragment
+        android:id="@+id/searchingFragment"
+        android:name="com.example.android__theaudiodb.exposition.searching.SearchingFragment"
+        android:label="fragment_searching"
+        tools:layout="@layout/fragment_searching" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.android__theaudiodb.exposition.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>
