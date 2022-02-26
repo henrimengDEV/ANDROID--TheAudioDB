@@ -14,11 +14,14 @@
         android:textStyle="bold" />
 
     <ImageView
+        android:id="@+id/item_image"
         android:layout_width="@dimen/vignette"
         android:layout_height="@dimen/vignette"
         android:layout_margin="@dimen/text_margin"
         android:background="@drawable/rectangle_rounded"
-        android:contentDescription="@string/placeholder" />
+        android:backgroundTint="#424242"
+        android:contentDescription="@string/placeholder"
+        android:scaleType="fitCenter" />
 
     <LinearLayout
         android:layout_width="match_parent"

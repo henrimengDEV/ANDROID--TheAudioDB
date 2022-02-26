@@ -27,7 +27,7 @@ class ArtistsRecyclerViewAdapter(
         val item = values[position]
 //        holder.artistItemImg.setImageURI(item.photo)
 //        holder.artistItemNext.setOnClickListener {  }
-        holder.artistItemName.text = item.name
+        holder.artistItemName.text = item.strArtist
     }
 
     override fun getItemCount(): Int = values.size

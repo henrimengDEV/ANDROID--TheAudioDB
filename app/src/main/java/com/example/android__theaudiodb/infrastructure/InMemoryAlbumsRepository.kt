@@ -3,7 +3,7 @@ package com.example.android__theaudiodb.infrastructure
 import com.example.android__theaudiodb.domain.album.Album
 import com.example.android__theaudiodb.domain.album.Albums
 
-object InMemoryAlbums : Albums {
+object InMemoryAlbumsRepository : Albums {
 
     private val albums: List<Album> = listOf(
         Album(name = "Coldplay", country = "France"),

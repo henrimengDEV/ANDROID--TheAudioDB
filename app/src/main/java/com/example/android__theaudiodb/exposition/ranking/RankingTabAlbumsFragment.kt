@@ -7,8 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
-import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
-import com.example.android__theaudiodb.infrastructure.InMemoryArtists
+import com.example.android__theaudiodb.infrastructure.InMemoryAlbumsRepository
 
 class RankingTabAlbumsFragment : Fragment(R.layout.fragment_ranking_title) {
 
@@ -18,7 +17,7 @@ class RankingTabAlbumsFragment : Fragment(R.layout.fragment_ranking_title) {
 
     fun setUpRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.music_titles).apply {
-            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll())
+            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbumsRepository.getAll())
             layoutManager = LinearLayoutManager(activity)
         }
     }
