@@ -14,10 +14,26 @@
         android:id="@+id/searchingFragment"
         android:name="com.example.android__theaudiodb.exposition.searching.SearchingFragment"
         android:label="fragment_searching"
-        tools:layout="@layout/fragment_searching" />
+        tools:layout="@layout/fragment_searching" >
+        <action
+            android:id="@+id/action_searchingFragment_to_artistFragment"
+            app:destination="@id/artistFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.android__theaudiodb.exposition.favorites.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_artistFragment"
+            app:destination="@id/artistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistFragment"
+        android:name="com.example.android__theaudiodb.exposition.artists.ArtistViewFragment"
+        android:label="ArtistFragment" >
+        <action
+            android:id="@+id/action_artistFragment_to_searchingFragment"
+            app:destination="@id/searchingFragment" />
+    </fragment>
 </navigation>

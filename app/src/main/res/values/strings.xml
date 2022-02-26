@@ -10,6 +10,7 @@
     <string name="favorites_header_title">Favoris</string>
     <string name="favorites_body_artists">Artistes</string>
     <string name="favorites_body_albums">Albums</string>
+    <string name="favorites_tracks">Titres les plus appréciés</string>
     <string name="favorites_header_description"><![CDATA[Mes artistes & albums]]></string>
     <string name="tab_albums">Albums</string>
     <string name="tab_title">Titres</string>

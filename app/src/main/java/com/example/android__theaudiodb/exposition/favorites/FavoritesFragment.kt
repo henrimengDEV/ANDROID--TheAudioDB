@@ -19,7 +19,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
     private fun setUpArtistsRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.favorites_artists).apply {
-            adapter = ArtistsRecyclerViewAdapter(InMemoryArtists.getAll())
+            adapter = ArtistsRecyclerViewAdapter(InMemoryArtists.getAll(), "FavoritesFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }
