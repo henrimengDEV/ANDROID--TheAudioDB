@@ -28,10 +28,14 @@ class AlbumsRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-//        holder.albumItemImg.setImageURI(item.photo)
+        holder.albumItemImg.setImageResource(R.drawable.artist)
         holder.albumItemNext.setOnClickListener {
             val bundle = bundleOf("sourceDestination" to sourceDestination)
-            Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_albumViewFragment, bundle)
+            when(sourceDestination) {
+                "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_albumViewFragment, bundle)
+                "FavoritesFragment" -> Navigation.findNavController(it).navigate(R.id.action_favoritesFragment_to_albumViewFragment, bundle)
+                "RankingTabAlbumsFragment" -> Navigation.findNavController(it).navigate(R.id.action_itemFragment_to_albumViewFragment, bundle)
+            }
         }
         holder.albumItemTitle.text = item.name
         holder.albumItemArtistName.text = item.name

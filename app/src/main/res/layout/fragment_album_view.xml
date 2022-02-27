@@ -19,41 +19,50 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="16dp" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/app_guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="12dp" />
+
     <!--  HEADER  -->
 
     <ImageView
         android:id="@+id/album_view_img"
         android:layout_width="match_parent"
         android:layout_height="223dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/planet_explosion"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
         android:id="@+id/album_view_back"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toTopOf="@id/album_view_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:src="@drawable/back_icon"
         app:layout_constraintLeft_toLeftOf="@id/album_view_img"
-        android:background="@drawable/ic_arrow_back"/>
+        app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
     <TextView
         android:id="@+id/album_view_name"
-        android:text="J'aime les nem"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/album_view_img"
+        android:text="J'aime les nem"
+        android:textColor="@color/white"
         app:layout_constraintLeft_toLeftOf="@id/album_view_img"
-        app:layout_constraintRight_toRightOf="@id/album_view_img"/>
-
-    <Button
-        android:id="@+id/album_view_like"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintTop_toTopOf="@id/album_view_img"
         app:layout_constraintRight_toRightOf="@id/album_view_img"
-        android:background="@drawable/circle"/>
+        app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
+
+    <ImageView
+        android:id="@+id/album_view_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/circle"
+        app:layout_constraintRight_toRightOf="@id/album_view_img"
+        app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
 
     <!--  BODY  -->
@@ -70,12 +79,26 @@
         app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
         app:layout_constraintTop_toBottomOf="@id/album_view_img">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_rounded_white"
+            android:gravity="center"
+            android:orientation="horizontal"
             android:paddingHorizontal="@dimen/semi_common_margin"
-            android:text="4.9" />
+            android:paddingVertical="2dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/star" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="4.9" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,6 +117,7 @@
         android:paddingBottom="30dp"
         android:text="@string/Lorem"
         android:textColor="@color/grey"
+        android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@id/app_guideline_left"
         app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
         app:layout_constraintTop_toBottomOf="@id/album_view_votes" />
