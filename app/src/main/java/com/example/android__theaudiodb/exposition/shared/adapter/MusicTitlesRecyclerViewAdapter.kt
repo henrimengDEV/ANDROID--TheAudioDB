@@ -18,7 +18,7 @@ class MusicTitlesRecyclerViewAdapter(
 ) : RecyclerView.Adapter<MusicTitlesRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return if (this.sourceDestination === "AlbumViewFragment") {
+        return if (this.sourceDestination === "AlbumViewFragment" || this.sourceDestination === "ArtistViewFragment") {
             ViewHolder(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.fragment_music_title_v2, parent, false), "AlbumViewFragment"
@@ -35,7 +35,7 @@ class MusicTitlesRecyclerViewAdapter(
         val item = values[position]
 
         when (this.sourceDestination) {
-            "AlbumViewFragment" -> {
+            "AlbumViewFragment", "ArtistViewFragment" -> {
                 holder.currentItem.findViewById<TextView>(R.id.item_position).text = (position + 1).toString()
                 holder.currentItem.findViewById<TextView>(R.id.item_title).text = item.name
             }
@@ -51,7 +51,7 @@ class MusicTitlesRecyclerViewAdapter(
 
     inner class ViewHolder(view: View, sourceDestination: String? = null) : RecyclerView.ViewHolder(view) {
         var currentItem: LinearLayout = when (sourceDestination) {
-            "AlbumViewFragment" -> {
+            "AlbumViewFragment", "ArtistViewFragment" -> {
                 view.findViewById(R.id.music_title_v2)
             }
             else -> {

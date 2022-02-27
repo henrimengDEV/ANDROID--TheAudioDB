@@ -35,7 +35,7 @@
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="@id/album_view_img"
         app:layout_constraintLeft_toLeftOf="@id/album_view_img"
-        android:background="@drawable/like"/>
+        android:background="@drawable/ic_arrow_back"/>
 
     <TextView
         android:id="@+id/album_view_name"
