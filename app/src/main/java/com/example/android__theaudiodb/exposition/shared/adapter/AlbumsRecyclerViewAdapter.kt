@@ -4,12 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.databinding.FragmentAlbumBinding
 import com.example.android__theaudiodb.domain.album.Album
 
 class AlbumsRecyclerViewAdapter(
-    private val values: List<Album>
+    private val values: List<Album>,
+    private val sourceDestination: String
 ) : RecyclerView.Adapter<AlbumsRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,7 +29,10 @@ class AlbumsRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
 //        holder.albumItemImg.setImageURI(item.photo)
-//        holder.albumItemNext.setOnClickListener {  }
+        holder.albumItemNext.setOnClickListener {
+            val bundle = bundleOf("sourceDestination" to sourceDestination)
+            Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_albumViewFragment, bundle)
+        }
         holder.albumItemTitle.text = item.name
         holder.albumItemArtistName.text = item.name
     }

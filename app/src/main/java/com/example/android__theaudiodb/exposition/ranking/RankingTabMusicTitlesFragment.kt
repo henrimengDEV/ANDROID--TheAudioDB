@@ -17,7 +17,7 @@ class RankingTabMusicTitlesFragment : Fragment(R.layout.fragment_ranking_title) 
 
     fun setUpRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.music_titles).apply {
-            adapter = MusicTitlesRecyclerViewAdapter(InMemoryArtists.getAll())
+            adapter = MusicTitlesRecyclerViewAdapter(InMemoryArtists.getAll(), "RankingTabMusicTitlesFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }

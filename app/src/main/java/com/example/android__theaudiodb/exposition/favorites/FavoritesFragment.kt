@@ -12,6 +12,7 @@ import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
 import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setUpArtistsRecyclerView(view)
         setUpAlbumsRecyclerView(view)
@@ -26,7 +27,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
     private fun setUpAlbumsRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.favorites_albums).apply {
-            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll())
+            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll(), "FavoritesFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }
