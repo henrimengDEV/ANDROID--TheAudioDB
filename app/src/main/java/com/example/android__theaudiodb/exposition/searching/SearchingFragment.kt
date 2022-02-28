@@ -26,7 +26,7 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
 
     private fun setUpAlbumsRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.searching_albums).apply {
-            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll())
+            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll(), "SearchingFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }
