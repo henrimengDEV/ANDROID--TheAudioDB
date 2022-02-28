@@ -1,19 +1,12 @@
 package com.example.android__theaudiodb.exposition.shared.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-
 import com.example.android__theaudiodb.databinding.FragmentMusicTitleBinding
-import com.example.android__theaudiodb.databinding.FragmentMusicTitleV2Binding
 import com.example.android__theaudiodb.domain.artist.Artist
-import com.squareup.picasso.MemoryPolicy
-import com.squareup.picasso.NetworkPolicy
-import com.squareup.picasso.Picasso
 
 class MusicTitlesRecyclerViewAdapter(
     private val values: List<Artist>,

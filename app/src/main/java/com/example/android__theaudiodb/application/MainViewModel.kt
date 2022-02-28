@@ -1,6 +1,5 @@
 package com.example.android__theaudiodb.application
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android__theaudiodb.domain.artist.Artist
