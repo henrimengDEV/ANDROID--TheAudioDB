@@ -1,12 +1,17 @@
 package com.example.android__theaudiodb.exposition.shared.adapter
 
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation
 import com.example.android__theaudiodb.R
+
+import com.example.android__theaudiodb.databinding.FragmentMusicTitleBinding
+import com.example.android__theaudiodb.databinding.FragmentMusicTitleV2Binding
 import com.example.android__theaudiodb.domain.artist.Artist
 
 class MusicTitlesRecyclerViewAdapter(
@@ -30,6 +35,14 @@ class MusicTitlesRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
+        holder.currentItem.setOnClickListener {
+            val bundle = bundleOf("sourceDestination" to sourceDestination)
+            when(sourceDestination) {
+                "RankingTabMusicTitlesFragment" -> Navigation.findNavController(it).navigate(R.id.action_itemFragment_to_lyricsViewFragment, bundle)
+                "ArtistViewFragment" -> Navigation.findNavController(it).navigate(R.id.action_artistFragment_to_lyricsViewFragment, bundle)
+                "AlbumViewFragment" -> Navigation.findNavController(it).navigate(R.id.action_albumViewFragment_to_lyricsViewFragment, bundle)
+            }
+        }
 
         when (this.sourceDestination) {
             "AlbumViewFragment", "ArtistViewFragment" -> {

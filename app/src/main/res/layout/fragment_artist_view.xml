@@ -19,17 +19,18 @@
             android:scaleType="centerCrop"
             android:src="@drawable/artist"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:layout_editor_absoluteX="1dp" />
 
         <LinearLayout
             android:id="@+id/artist_view_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             app:layout_constraintTop_toTopOf="@id/artist_view_img">
 
             <ImageView
-                android:id="@+id/artist_view_prev"
+                android:id="@+id/artist_view_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -55,6 +56,7 @@
             app:layout_constraintLeft_toLeftOf="@id/artist_view_img">
 
             <TextView
+                android:id="@+id/artist_view_description_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nom de l'artiste"
@@ -63,6 +65,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/artist_view_description_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nom de l'artiste"
@@ -85,6 +88,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/artist_view_bio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Lorem"
@@ -96,6 +100,7 @@
                     android:layout_height="@dimen/common_margin" />
 
                 <TextView
+                    android:id="@+id/artist_view_album_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/semi_common_margin"
