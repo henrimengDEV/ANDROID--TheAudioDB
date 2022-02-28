@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_itemFragment_to_albumViewFragment"
             app:destination="@id/albumViewFragment" />
+        <action
+            android:id="@+id/action_itemFragment_to_lyricsViewFragment"
+            app:destination="@id/lyricsViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchingFragment"
@@ -45,6 +48,15 @@
         <action
             android:id="@+id/action_artistFragment_to_searchingFragment"
             app:destination="@id/searchingFragment" />
+        <action
+            android:id="@+id/action_artistFragment_to_lyricsViewFragment"
+            app:destination="@id/lyricsViewFragment" />
+        <action
+            android:id="@+id/action_artistFragment_to_searchingFragment2"
+            app:destination="@id/searchingFragment" />
+        <action
+            android:id="@+id/action_artistFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumViewFragment"
@@ -58,6 +70,23 @@
             app:destination="@id/favoritesFragment" />
         <action
             android:id="@+id/action_albumViewFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+        <action
+            android:id="@+id/action_albumViewFragment_to_lyricsViewFragment"
+            app:destination="@id/lyricsViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lyricsViewFragment"
+        android:name="com.example.android__theaudiodb.exposition.parole.LyricsViewFragment"
+        android:label="LyricsViewFragment" >
+        <action
+            android:id="@+id/action_lyricsViewFragment_to_albumViewFragment2"
+            app:destination="@id/albumViewFragment" />
+        <action
+            android:id="@+id/action_lyricsViewFragment_to_artistFragment"
+            app:destination="@id/artistFragment" />
+        <action
+            android:id="@+id/action_lyricsViewFragment_to_itemFragment"
             app:destination="@id/itemFragment" />
     </fragment>
 </navigation>

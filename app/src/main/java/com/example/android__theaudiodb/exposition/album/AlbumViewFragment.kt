@@ -21,7 +21,7 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
         this.sourceDestination = arguments?.get("sourceDestination") as String
         setUpRecyclerView(view)
         setUpBackBtn(view, sourceDestination!!)
-        view.findViewById<ImageView>(R.id.album_view_img).setImageResource(R.drawable.artist)
+        view.findViewById<ImageView>(R.id.lyrics_view_img).setImageResource(R.drawable.artist)
         hideMenu(view)
     }
 
