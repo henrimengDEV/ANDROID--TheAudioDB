@@ -8,4 +8,6 @@ class APIRepository {
 
     suspend fun getTopFiftyTracksOfAllTime() = APIService.getInstance().retrieveTopFiftyMusicOfAllTime()
 
+    suspend fun getTopTenAlbumsOfAllTime() = APIService.getInstance().retrieveTopTenAlbumsOfAllTime()
+
 }

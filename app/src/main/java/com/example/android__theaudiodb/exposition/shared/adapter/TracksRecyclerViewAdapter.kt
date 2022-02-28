@@ -8,10 +8,8 @@ import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.databinding.FragmentArtistBinding
 import com.example.android__theaudiodb.databinding.FragmentMusicTitleBinding
-import com.example.android__theaudiodb.domain.Track
-import com.example.android__theaudiodb.domain.artist.Artist
+import com.example.android__theaudiodb.domain.track.Track
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso

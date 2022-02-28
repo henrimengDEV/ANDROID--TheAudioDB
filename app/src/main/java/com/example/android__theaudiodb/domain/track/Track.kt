@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.domain
+package com.example.android__theaudiodb.domain.track
 
 class Track(
     val idTrack: Int?,

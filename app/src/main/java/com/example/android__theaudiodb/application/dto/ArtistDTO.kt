@@ -1,4 +1,4 @@
-
+package com.example.android__theaudiodb.application.dto
 
 
 
@@ -53,5 +53,8 @@ data class ArtistDTO (
     var strLastFMChart     : String? = null,
     var intCharted         : String? = null,
     var strLocked          : String? = null
+)
 
+class ArtistsDTO (
+    val artists       : List<ArtistDTO>? = null
 )

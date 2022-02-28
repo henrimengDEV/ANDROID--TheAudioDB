@@ -23,13 +23,11 @@ class RankingTabMusicTitlesFragment : Fragment(R.layout.fragment_ranking_title) 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val loadingProgress = view.findViewById<ProgressBar>(R.id.indeterminateBar)
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getTopFiftyTracks()
             }
         }
-
         viewModel.tracks.observe(viewLifecycleOwner) {
             view.findViewById<RecyclerView>(R.id.music_titles).apply {
                 adapter = TracksRecyclerViewAdapter(it, "RankingTabMusicTitlesFragment")

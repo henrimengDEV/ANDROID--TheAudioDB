@@ -1,6 +1,6 @@
 package com.example.android__theaudiodb.domain.artist
 
-import ArtistDTO
+import com.example.android__theaudiodb.application.dto.ArtistDTO
 
 class ArtistAdapter {
     companion object{
