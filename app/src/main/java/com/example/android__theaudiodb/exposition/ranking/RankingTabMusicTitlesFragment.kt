@@ -12,27 +12,27 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.application.MainViewModel
-import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
+import com.example.android__theaudiodb.application.viewmodel.TracksViewModel
+import com.example.android__theaudiodb.exposition.shared.adapter.TracksRecyclerViewAdapter
 import kotlinx.coroutines.launch
 
 
 class RankingTabMusicTitlesFragment : Fragment(R.layout.fragment_ranking_title) {
 
-    private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: TracksViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val loadingProgress = view.findViewById<ProgressBar>(R.id.indeterminateBar)
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getArtist("coldplay")
+                viewModel.getTopFiftyTracks()
             }
         }
 
-        viewModel.artist.observe(viewLifecycleOwner) {
+        viewModel.tracks.observe(viewLifecycleOwner) {
             view.findViewById<RecyclerView>(R.id.music_titles).apply {
-                adapter = ArtistsRecyclerViewAdapter(it, "RankingTabMusicTitlesFragment")
+                adapter = TracksRecyclerViewAdapter(it, "RankingTabMusicTitlesFragment")
                 layoutManager = LinearLayoutManager(activity)
             }
         }
