@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.databinding.FragmentArtistBinding
 import com.example.android__theaudiodb.domain.artist.Artist
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 
 class ArtistsRecyclerViewAdapter(
     private val values: List<Artist>,
@@ -28,7 +31,13 @@ class ArtistsRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.artistItemImg.setImageResource(R.drawable.artist)
+        Picasso.get()
+            .load(item.strArtistLogo)
+            .memoryPolicy(MemoryPolicy.NO_CACHE)
+            .networkPolicy(NetworkPolicy.NO_CACHE)
+            .error(R.drawable.ic_no_image)
+            .noFade()
+            .into(holder.artistItemImg)
         holder.artistItemNext.setOnClickListener {
             val bundle = bundleOf("sourceDestination" to sourceDestination)
             when(sourceDestination) {
