@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
@@ -36,7 +37,7 @@ class ArtistsRecyclerViewAdapter(
             }
 
         }
-        holder.artistItemName.text = item.name
+        holder.artistItemName.text = item.strArtist
     }
 
     override fun getItemCount(): Int = values.size
