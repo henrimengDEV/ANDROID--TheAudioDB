@@ -1,12 +1,11 @@
 package com.example.android__theaudiodb.exposition.shared.adapter
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.databinding.FragmentArtistBinding
-
 import com.example.android__theaudiodb.domain.artist.Artist
 
 class ArtistsRecyclerViewAdapter(
