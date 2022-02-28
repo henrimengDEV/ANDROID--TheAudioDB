@@ -19,14 +19,14 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
 
     private fun setUpArtistsRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.searching_artists).apply {
-            adapter = ArtistsRecyclerViewAdapter(InMemoryArtistsRepository.getAll())
+            adapter = ArtistsRecyclerViewAdapter(InMemoryArtistsRepository.getAll(), "SearchingFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }
 
     private fun setUpAlbumsRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.searching_albums).apply {
-            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbumsRepository.getAll())
+            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbumsRepository.getAll(), "SearchingFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }

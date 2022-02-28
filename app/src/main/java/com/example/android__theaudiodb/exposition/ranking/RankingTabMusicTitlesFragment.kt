@@ -32,7 +32,7 @@ class RankingTabMusicTitlesFragment : Fragment(R.layout.fragment_ranking_title) 
 
         viewModel.artist.observe(viewLifecycleOwner) {
             view.findViewById<RecyclerView>(R.id.music_titles).apply {
-                adapter = MusicTitlesRecyclerViewAdapter(it)
+                adapter = MusicTitlesRecyclerViewAdapter(it, "RankingTabMusicTitlesFragment")
                 layoutManager = LinearLayoutManager(activity)
             }
         }

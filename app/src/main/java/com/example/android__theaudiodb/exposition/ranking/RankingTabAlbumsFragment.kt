@@ -1,6 +1,8 @@
 package com.example.android__theaudiodb.exposition.ranking
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -19,7 +21,7 @@ class RankingTabAlbumsFragment : Fragment(R.layout.fragment_ranking_title) {
 
     fun setUpRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.music_titles).apply {
-            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbumsRepository.getAll())
+            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbumsRepository.getAll(), "RankingTabAlbumsFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }
