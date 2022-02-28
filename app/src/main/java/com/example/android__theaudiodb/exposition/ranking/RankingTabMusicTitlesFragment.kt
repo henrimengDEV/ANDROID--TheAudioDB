@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.application.MainViewModel
-import com.example.android__theaudiodb.exposition.shared.adapter.MusicTitlesRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
 import kotlinx.coroutines.launch
 
 
@@ -32,7 +32,7 @@ class RankingTabMusicTitlesFragment : Fragment(R.layout.fragment_ranking_title) 
 
         viewModel.artist.observe(viewLifecycleOwner) {
             view.findViewById<RecyclerView>(R.id.music_titles).apply {
-                adapter = MusicTitlesRecyclerViewAdapter(it, "RankingTabMusicTitlesFragment")
+                adapter = ArtistsRecyclerViewAdapter(it, "RankingTabMusicTitlesFragment")
                 layoutManager = LinearLayoutManager(activity)
             }
         }
