@@ -3,14 +3,10 @@ package com.example.android__theaudiodb.exposition.searching
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.text.method.TextKeyListener.clear
-import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
-import androidx.appcompat.widget.SearchView
 import android.widget.Toast
-import androidx.core.view.get
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
