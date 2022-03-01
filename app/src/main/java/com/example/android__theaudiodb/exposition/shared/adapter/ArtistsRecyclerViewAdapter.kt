@@ -15,7 +15,7 @@ import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 class ArtistsRecyclerViewAdapter(
-    private val values: List<Artist>,
+    private var values: List<Artist>,
     private val sourceDestination: String
 ) : RecyclerView.Adapter<ArtistsRecyclerViewAdapter.ViewHolder>() {
 
@@ -55,6 +55,11 @@ class ArtistsRecyclerViewAdapter(
         val artistItemImg: ImageView = binding.artistItemImg
         val artistItemName: TextView = binding.artistItemName
         val artistItemNext: TextView = binding.artistItemNext
+    }
+
+    fun clear()
+    {
+        values = listOf()
     }
 
 }

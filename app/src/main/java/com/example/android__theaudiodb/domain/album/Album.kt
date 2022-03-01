@@ -8,3 +8,4 @@ class Album(
    val photoURL      : String? = null,
    val artistName : String? = null
 ) {}
+

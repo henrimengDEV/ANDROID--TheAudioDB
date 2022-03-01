@@ -1,5 +1,6 @@
 package com.example.android__theaudiodb.domain
 
+import com.example.android__theaudiodb.application.dto.AlbumsDTO
 import com.example.android__theaudiodb.application.dto.ArtistsDTO
 import com.example.android__theaudiodb.application.dto.LovedAlbumsDTO
 import com.example.android__theaudiodb.application.dto.LovedTracksDTO
@@ -30,6 +31,9 @@ interface APIService {
 
     @GET("v1/json/523532/search.php")
     suspend fun retrieveArtist(@Query("s") artistName: String): Response<ArtistsDTO>
+
+    @GET("v1/json/523532/searchalbum.php")
+    suspend fun retrieveAllAlbumsByArtistName(@Query("s") artistName: String): Response<AlbumsDTO>
 
     @GET("v1/json/523532/mostloved.php?format=track")
     suspend fun retrieveTopFiftyMusicOfAllTime(): Response<LovedTracksDTO>

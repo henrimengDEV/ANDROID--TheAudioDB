@@ -25,7 +25,6 @@ class AlbumsViewModel(): ViewModel() {
             val response = APIRepository().getTopTenAlbumsOfAllTime()
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    println(response.body()?.lovedAlbums?.first())
                     albums.postValue(response.body()?.lovedAlbums?.asFlow()?.map{ AlbumAdapter.adapt(it)}?.toList())
                     loading.value = false
                 } else {
@@ -35,8 +34,26 @@ class AlbumsViewModel(): ViewModel() {
         }
     }
 
+    fun getAlbumsByArtistName(artistName: String) {
+        loading.value = true
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = APIRepository().getAllAlbumsByArtistName(artistName)
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful && response.body()?.albums != null) {
+                        albums.postValue(
+                            response.body()?.albums?.asFlow()?.map { AlbumAdapter.adapt(it) }
+                                ?.toList()
+                        )
+                    loading.value = false
+                } else {
+                    onError("Nothing found !")
+                }
+            }
+        }
+    }
+
     private fun onError(message: String) {
-        errorMessage.value = message
+        errorMessage.postValue(message)
         loading.value = false
     }
 

@@ -10,4 +10,6 @@ class APIRepository {
 
     suspend fun getTopTenAlbumsOfAllTime() = APIService.getInstance().retrieveTopTenAlbumsOfAllTime()
 
+    suspend fun getAllAlbumsByArtistName(artistName: String) = APIService.getInstance().retrieveAllAlbumsByArtistName(artistName)
+
 }

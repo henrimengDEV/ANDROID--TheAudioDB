@@ -68,3 +68,7 @@ data class AlbumDTO(
 class LovedAlbumsDTO (
   @SerializedName("loved")  var lovedAlbums       : List<AlbumDTO>? = null
 )
+
+class AlbumsDTO (
+    @SerializedName("album")  var albums       : List<AlbumDTO>? = null
+)

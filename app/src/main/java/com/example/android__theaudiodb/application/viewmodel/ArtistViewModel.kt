@@ -20,18 +20,18 @@ class ArtistViewModel(): ViewModel() {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = APIRepository().getArtist(artistName)
             withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
+                if (response.isSuccessful && response.body()?.artists != null) {
                     artist.postValue(listOf(ArtistAdapter.adapt(response.body()?.artists?.get(0)!!)))
                     loading.value = false
                 } else {
-                    onError("Error : ${response.message()} ")
+                    onError("Nothing found !")
                 }
             }
         }
     }
 
     private fun onError(message: String) {
-        errorMessage.value = message
+        errorMessage.postValue(message)
         loading.value = false
     }
 

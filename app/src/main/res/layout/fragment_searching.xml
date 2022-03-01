@@ -38,6 +38,7 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_bar"
             android:background="@drawable/rectangle_rounded" />
@@ -107,6 +108,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/fragment_artist" />
+        <ProgressBar
+            android:id="@+id/indeterminate_Bar_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foregroundTint="#8C8C8C"
+            android:foregroundTintMode="src_over"
+            android:indeterminate="true"
+            android:indeterminateTint="#686868"
+            android:visibility="invisible" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
