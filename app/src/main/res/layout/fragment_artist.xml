@@ -27,14 +27,11 @@
         app:layout_constraintLeft_toRightOf="@id/artist_item_img"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <ImageView
         android:id="@+id/artist_item_next"
+        android:src="@drawable/arrow_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=">"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

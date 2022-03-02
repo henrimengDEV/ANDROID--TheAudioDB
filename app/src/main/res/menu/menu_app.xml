@@ -2,10 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/itemFragment"
-        android:title="Classement"/>
+        android:icon="@drawable/ranking_icon"
+        android:title="@string/ranking"/>
     <item android:id="@+id/searchingFragment"
-        android:title="Recherche"/>
+        android:icon="@drawable/search_icon"
+        android:title="@string/search"/>
     <item android:id="@+id/favoritesFragment"
-        android:title="Favoris"/>
+        android:icon="@drawable/favorite_icon"
+        android:title="@string/favorites"/>
 
 </menu>

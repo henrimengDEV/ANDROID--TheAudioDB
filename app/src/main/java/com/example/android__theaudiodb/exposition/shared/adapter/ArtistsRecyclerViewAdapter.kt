@@ -32,13 +32,12 @@ class ArtistsRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.artistItemImg.setImageResource(R.drawable.artist)
-        holder.artistItemNext.setOnClickListener {
+        holder.itemView.setOnClickListener {
             val bundle = bundleOf("sourceDestination" to sourceDestination)
             when(sourceDestination) {
                 "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_artistFragment, bundle)
                 "FavoritesFragment" -> Navigation.findNavController(it).navigate(R.id.action_favoritesFragment_to_artistFragment, bundle)
             }
-
         }
         holder.artistItemName.text = item.name
     }
@@ -48,7 +47,7 @@ class ArtistsRecyclerViewAdapter(
     inner class ViewHolder(binding: FragmentArtistBinding) : RecyclerView.ViewHolder(binding.root) {
         val artistItemImg: ImageView = binding.artistItemImg
         val artistItemName: TextView = binding.artistItemName
-        val artistItemNext: TextView = binding.artistItemNext
+        val artistItemNext: ImageView = binding.artistItemNext
     }
 
 }

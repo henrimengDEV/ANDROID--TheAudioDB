@@ -29,7 +29,7 @@ class AlbumsRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.albumItemImg.setImageResource(R.drawable.artist)
-        holder.albumItemNext.setOnClickListener {
+        holder.itemView.setOnClickListener {
             val bundle = bundleOf("sourceDestination" to sourceDestination)
             when(sourceDestination) {
                 "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_albumViewFragment, bundle)
@@ -47,7 +47,7 @@ class AlbumsRecyclerViewAdapter(
         val albumItemImg: ImageView = binding.albumItemImg
         val albumItemTitle: TextView = binding.albumItemTitle
         val albumItemArtistName: TextView = binding.albumItemArtistName
-        val albumItemNext: TextView = binding.albumItemNext
+        val albumItemNext: ImageView = binding.albumItemNext
     }
 
 }

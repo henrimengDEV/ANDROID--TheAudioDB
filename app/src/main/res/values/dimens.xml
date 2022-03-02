@@ -6,5 +6,5 @@
     <dimen name="title">40sp</dimen>
     <dimen name="semi_common_margin">8dp</dimen>
     <dimen name="search_bar">40dp</dimen>
-    <dimen name="vignette">40dp</dimen>
+    <dimen name="vignette">50dp</dimen>
 </resources>
