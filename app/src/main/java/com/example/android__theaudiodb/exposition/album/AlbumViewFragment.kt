@@ -15,24 +15,17 @@ import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 
 class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 
-    private var sourceDestination: String? = null
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        this.sourceDestination = arguments?.get("sourceDestination") as String
         setUpRecyclerView(view)
-        setUpBackBtn(view, sourceDestination!!)
+        setUpBackBtn(view)
         view.findViewById<ImageView>(R.id.lyrics_view_img).setImageResource(R.drawable.artist)
         hideMenu(view)
     }
 
-    private fun setUpBackBtn(view: View, sourceDestination: String) {
+    private fun setUpBackBtn(view: View) {
         view.findViewById<ImageView>(R.id.album_view_back).setOnClickListener {
             showMenu(view)
-            when(sourceDestination) {
-                "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_albumViewFragment_to_searchingFragment)
-                "FavoritesFragment" -> Navigation.findNavController(it).navigate(R.id.action_albumViewFragment_to_favoritesFragment)
-                "RankingTabAlbumsFragment" -> Navigation.findNavController(it).navigate(R.id.action_albumViewFragment_to_itemFragment)
-            }
+            Navigation.findNavController(view).navigateUp()
         }
     }
 

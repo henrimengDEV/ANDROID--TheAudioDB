@@ -10,26 +10,18 @@ import com.example.android__theaudiodb.R
 import org.w3c.dom.Text
 
 class LyricsViewFragment : Fragment(R.layout.fragment_lyrics_view) {
-    private var sourceDestination: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        this.sourceDestination = arguments?.get("sourceDestination") as String
-        setUpBackBtn(view, sourceDestination!!)
+        setUpBackBtn(view)
         view.findViewById<ImageView>(R.id.lyrics_view_miniature).setImageResource(R.drawable.artist) //miniature Parole
         view.findViewById<TextView>(R.id.lyrics_view_track).text = "Titre" // Musique parole
         view.findViewById<TextView>(R.id.lyrics_view_artist).text = "Artist" // Artiste parole
         view.findViewById<TextView>(R.id.lyrics).text = "PAROLES" // Parole de la musique
     }
 
-    //Back Button
-    private fun setUpBackBtn(view: View, sourceDestination: String) {
+    private fun setUpBackBtn(view: View) {
         view.findViewById<ImageView>(R.id.lyrics_view_back).setOnClickListener {
-//            FileUtils.showMenu(view)
-            when(sourceDestination) {
-                "RankingTabMusicTitlesFragment" -> Navigation.findNavController(it).navigate(R.id.action_lyricsViewFragment_to_itemFragment)
-                "ArtistViewFragment" -> Navigation.findNavController(it).navigate(R.id.action_lyricsViewFragment_to_artistFragment)
-                "AlbumViewFragment" -> Navigation.findNavController(it).navigate(R.id.action_lyricsViewFragment_to_albumViewFragment2)
-            }
+            Navigation.findNavController(view).navigateUp()
         }
     }
 
