@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.android__theaudiodb.domain.artist.Artist
 import com.example.android__theaudiodb.domain.artist.ArtistAdapter
 import com.example.android__theaudiodb.infrastructure.APIRepository
+import com.example.android__theaudiodb.infrastructure.SQLite.DatabaseManager
 import kotlinx.coroutines.*
 
 class ArtistViewModel(): ViewModel() {
@@ -17,6 +18,7 @@ class ArtistViewModel(): ViewModel() {
     val loading = MutableLiveData<Boolean>()
 
     fun getArtist(artistName: String) {
+
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = APIRepository().getArtist(artistName)
             withContext(Dispatchers.Main) {
