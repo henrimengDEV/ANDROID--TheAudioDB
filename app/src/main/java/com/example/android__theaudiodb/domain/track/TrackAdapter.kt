@@ -26,7 +26,8 @@ class TrackAdapter {
                 source.intScoreVotes,
                 source.intTotalListeners,
                 source.intTotalPlays,
-                source.strTrackThumb
+                source.strTrackThumb,
+                source.strTrackLyrics
             )
         }
     }

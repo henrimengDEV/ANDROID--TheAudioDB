@@ -1,9 +1,12 @@
 package com.example.android__theaudiodb.domain.track
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity
 class Track(
     @PrimaryKey(autoGenerate = true) val id: Long,
@@ -26,5 +29,10 @@ class Track(
     @ColumnInfo(name = "score_votes") val scoreVotes: Int?,
     @ColumnInfo(name = "total_listeners") val totalListeners: Int?,
     @ColumnInfo(name = "total_plays") val totalPlays: Int?,
-    @ColumnInfo(name = "track_image_url") val trackImageURL: String?
-)
+    @ColumnInfo(name = "track_image_url") val trackImageURL: String?,
+    @ColumnInfo(name = "lyrics") val lyrics: String?
+) : Parcelable {
+    override fun toString(): String {
+        return "Track(id=$id, idAlbum=$idAlbum, idArtist=$idArtist, idLyric=$idLyric, name=$name, album=$album, artist=$artist, CD=$CD, duration=$duration, genre=$genre, mood=$mood, style=$style, strTheme=$strTheme, descriptionEN=$descriptionEN, descriptionFR=$descriptionFR, loved=$loved, score=$score, scoreVotes=$scoreVotes, totalListeners=$totalListeners, totalPlays=$totalPlays, trackImageURL=$trackImageURL, lyrics=$lyrics)"
+    }
+}

@@ -66,7 +66,7 @@ class TracksRecyclerViewAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            val bundle = bundleOf("sourceDestination" to sourceDestination)
+            val bundle = bundleOf("track" to item)
             when (sourceDestination) {
                 "SearchingFragment" -> Navigation.findNavController(it)
                     .navigate(R.id.action_searchingFragment_to_artistFragment, bundle)

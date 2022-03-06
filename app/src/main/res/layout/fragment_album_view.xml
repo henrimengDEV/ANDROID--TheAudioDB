@@ -32,7 +32,7 @@
         <!--  HEADER  -->
 
         <ImageView
-            android:id="@+id/album_view_img"
+            android:id="@+id/lyrics_view_img"
             android:layout_width="match_parent"
             android:layout_height="223dp"
             android:scaleType="centerCrop"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:src="@drawable/back_icon"
-            app:layout_constraintLeft_toLeftOf="@id/album_view_img"
+            app:layout_constraintLeft_toLeftOf="@id/lyrics_view_img"
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
         <TextView
@@ -52,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            app:layout_constraintLeft_toLeftOf="@id/album_view_img"
-            app:layout_constraintRight_toRightOf="@id/album_view_img"
+            app:layout_constraintLeft_toLeftOf="@id/lyrics_view_img"
+            app:layout_constraintRight_toRightOf="@id/lyrics_view_img"
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
         <ImageView
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:background="@drawable/circle"
-            app:layout_constraintRight_toRightOf="@id/album_view_img"
+            app:layout_constraintRight_toRightOf="@id/lyrics_view_img"
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
 
@@ -78,7 +78,7 @@
             android:padding="12dp"
             app:layout_constraintLeft_toRightOf="@id/app_guideline_left"
             app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
-            app:layout_constraintTop_toBottomOf="@id/album_view_img">
+            app:layout_constraintTop_toBottomOf="@id/lyrics_view_img">
 
             <LinearLayout
                 android:layout_width="wrap_content"

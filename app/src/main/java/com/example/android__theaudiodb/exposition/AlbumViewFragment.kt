@@ -35,7 +35,6 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
         setUpRecyclerView(view)
         setUpBackBtn(view)
         setUpView(view)
-        view.findViewById<ImageView>(R.id.album_view_img).setImageResource(R.drawable.artist)
         hideMenu(view)
     }
 
@@ -48,7 +47,7 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
             .networkPolicy(NetworkPolicy.NO_CACHE)
             .error(R.drawable.ic_no_image)
             .noFade()
-            .into(view.findViewById<ImageView>(R.id.album_view_img))
+            .into(view.findViewById<ImageView>(R.id.lyrics_view_img))
 
 //        if (this.album.votes != null)
 //            view.findViewById<TextView>(R.id.album_view_votes).visibility = View.GONE
