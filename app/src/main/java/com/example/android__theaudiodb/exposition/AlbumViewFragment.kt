@@ -42,8 +42,8 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 
     private fun setUpView(view: View) {
         when(like){
-            true -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_on)
-            false -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_off)
+            true -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
+            false -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
         }
         view.findViewById<TextView>(R.id.album_view_name).text = this.album?.name
         view.findViewById<TextView>(R.id.album_view_description).text = this.album?.descriptionFR
@@ -53,7 +53,7 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
             .networkPolicy(NetworkPolicy.NO_CACHE)
             .error(R.drawable.ic_no_image)
             .noFade()
-            .into(view.findViewById<ImageView>(R.id.lyrics_view_img))
+            .into(view.findViewById<ImageView>(R.id.album_view_img))
 
 //        if (this.album.votes != null)
 //            view.findViewById<TextView>(R.id.album_view_votes).visibility = View.GONE
