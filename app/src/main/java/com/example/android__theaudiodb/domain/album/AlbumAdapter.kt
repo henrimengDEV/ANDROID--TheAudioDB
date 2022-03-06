@@ -1,6 +1,6 @@
 package com.example.android__theaudiodb.domain.album
 
-import com.example.android__theaudiodb.application.dto.AlbumDTO
+import com.example.android__theaudiodb.application.AlbumDTO
 
 class AlbumAdapter {
     companion object {

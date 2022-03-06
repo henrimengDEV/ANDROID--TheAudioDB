@@ -1,20 +1,23 @@
 package com.example.android__theaudiodb.infrastructure
 
 import com.example.android__theaudiodb.domain.album.Album
+import com.example.android__theaudiodb.domain.album.Albums
 import com.example.android__theaudiodb.infrastructure.sqlite.dao.AlbumDAO
 import javax.inject.Inject
 import javax.inject.Singleton
 
-//TODO implement ArtistRepo mais faut gérer ArtistEntity -> Artist
-
 @Singleton
-class SQLiteAlbumsRepository @Inject constructor(private val albumDAO: AlbumDAO) {
+class SQLiteAlbums @Inject constructor(private val albumDAO: AlbumDAO) : Albums {
 
-    fun getByName(name: String): Album {
+    override fun getByName(name: String): Album {
         return this.albumDAO.getByName(name)
     }
 
-    fun getAll(): List<Album> {
+    override fun getAll(): List<Album> {
         return this.albumDAO.getAll()
+    }
+
+    override fun add() {
+        TODO("Not yet implemented")
     }
 }

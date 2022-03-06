@@ -5,8 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.android__theaudiodb.domain.album.Album
 import com.example.android__theaudiodb.domain.album.AlbumAdapter
 import com.example.android__theaudiodb.infrastructure.APIRepository
-import com.example.android__theaudiodb.infrastructure.SQLiteAlbumsRepository
-import com.example.android__theaudiodb.infrastructure.SQLiteArtistsRepository
+import com.example.android__theaudiodb.infrastructure.SQLiteAlbums
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.asFlow
@@ -15,7 +14,7 @@ import kotlinx.coroutines.flow.toList
 import javax.inject.Inject
 
 @HiltViewModel
-class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAlbumsRepository) : ViewModel() {
+class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAlbums) : ViewModel() {
     val errorMessage = MutableLiveData<String>()
     val albums = MutableLiveData<List<Album>>()
     var job: Job? = null

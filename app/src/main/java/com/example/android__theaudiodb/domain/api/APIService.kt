@@ -1,9 +1,9 @@
-package com.example.android__theaudiodb.domain
+package com.example.android__theaudiodb.domain.api
 
-import com.example.android__theaudiodb.application.dto.AlbumsDTO
-import com.example.android__theaudiodb.application.dto.ArtistsDTO
-import com.example.android__theaudiodb.application.dto.LovedAlbumsDTO
-import com.example.android__theaudiodb.application.dto.LovedTracksDTO
+import com.example.android__theaudiodb.application.AlbumsDTO
+import com.example.android__theaudiodb.application.ArtistsDTO
+import com.example.android__theaudiodb.application.LovedAlbumsDTO
+import com.example.android__theaudiodb.application.LovedTracksDTO
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit

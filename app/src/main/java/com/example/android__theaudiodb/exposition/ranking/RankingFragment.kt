@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.infrastructure.SQLiteArtistsRepository
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class RankingFragment : Fragment(R.layout.fragment_ranking) {

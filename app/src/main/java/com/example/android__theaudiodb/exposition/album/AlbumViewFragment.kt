@@ -11,7 +11,7 @@ import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.FileUtils.Companion.hideMenu
 import com.example.android__theaudiodb.exposition.shared.adapter.FileUtils.Companion.showMenu
-import com.example.android__theaudiodb.infrastructure.InMemoryArtistsRepository
+import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,7 +40,7 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 
     private fun setUpRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.album_view_albums).apply {
-            adapter = ArtistsRecyclerViewAdapter(InMemoryArtistsRepository.getAll(), "AlbumViewFragment")
+            adapter = ArtistsRecyclerViewAdapter(InMemoryArtists.getAll(), "AlbumViewFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }

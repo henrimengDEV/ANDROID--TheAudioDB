@@ -1,6 +1,7 @@
 package com.example.android__theaudiodb.domain.artist
 
-interface ArtistsRepository {
+interface Artists {
     fun getByName(name: String): Artist?
     fun getAll(): List<Artist>
+    fun add()
 }

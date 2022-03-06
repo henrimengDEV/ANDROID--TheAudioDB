@@ -12,8 +12,8 @@ import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.FileUtils
-import com.example.android__theaudiodb.infrastructure.InMemoryAlbumsRepository
-import com.example.android__theaudiodb.infrastructure.InMemoryArtistsRepository
+import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
+import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,13 +49,13 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
     // Recycler
     private fun setUpAlbumsRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.artist_albums).apply {
-            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbumsRepository.getAll(), "ArtistViewFragment")
+            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll(), "ArtistViewFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }
     private fun setUpFavTracksRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.artist_fav_tracks).apply {
-            adapter = ArtistsRecyclerViewAdapter(InMemoryArtistsRepository.getAll(), "ArtistViewFragment")
+            adapter = ArtistsRecyclerViewAdapter(InMemoryArtists.getAll(), "ArtistViewFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }

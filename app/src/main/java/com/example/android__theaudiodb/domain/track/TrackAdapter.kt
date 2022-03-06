@@ -1,6 +1,6 @@
 package com.example.android__theaudiodb.domain.track
 
-import com.example.android__theaudiodb.application.dto.TrackDTO
+import com.example.android__theaudiodb.application.TrackDTO
 
 class TrackAdapter {
     companion object {

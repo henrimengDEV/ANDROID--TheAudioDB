@@ -3,7 +3,8 @@ package com.example.android__theaudiodb.infrastructure
 import com.example.android__theaudiodb.domain.album.Album
 import com.example.android__theaudiodb.domain.album.Albums
 
-object InMemoryAlbumsRepository : Albums {
+@Deprecated("")
+object InMemoryAlbums : Albums {
 
     private val albums: List<Album> = listOf(
         Album(id = 1, name = "Coldplay", descriptionFR = "France"),
@@ -16,6 +17,10 @@ object InMemoryAlbumsRepository : Albums {
 
     override fun getAll(): List<Album> {
         return this.albums
+    }
+
+    override fun add() {
+        TODO("Not yet implemented")
     }
 
 }

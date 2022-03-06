@@ -1,9 +1,10 @@
 package com.example.android__theaudiodb.infrastructure
 
 import com.example.android__theaudiodb.domain.artist.Artist
-import com.example.android__theaudiodb.domain.artist.ArtistsRepository
+import com.example.android__theaudiodb.domain.artist.Artists
 
-object InMemoryArtistsRepository : ArtistsRepository {
+@Deprecated("")
+object InMemoryArtists : Artists {
 
     private val artists: List<Artist> = listOf(
         Artist(id = 1, name = "Coldplay", country = "France"),
@@ -16,6 +17,10 @@ object InMemoryArtistsRepository : ArtistsRepository {
 
     override fun getAll(): List<Artist> {
         return this.artists
+    }
+
+    override fun add() {
+        TODO("Not yet implemented")
     }
 
 }

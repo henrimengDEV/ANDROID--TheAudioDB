@@ -1,6 +1,6 @@
 package com.example.android__theaudiodb.infrastructure
 
-import com.example.android__theaudiodb.domain.APIService
+import com.example.android__theaudiodb.domain.api.APIService
 
 class APIRepository {
 

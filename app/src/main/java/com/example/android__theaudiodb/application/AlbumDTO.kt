@@ -1,7 +1,6 @@
-package com.example.android__theaudiodb.application.dto
+package com.example.android__theaudiodb.application
 
 import com.google.gson.annotations.SerializedName
-
 
 data class AlbumDTO(
     var idAlbum: Long,
@@ -65,10 +64,10 @@ data class AlbumDTO(
     var strLocked: String? = null
 )
 
-class LovedAlbumsDTO (
-  @SerializedName("loved")  var lovedAlbums       : List<AlbumDTO>? = null
+class LovedAlbumsDTO(
+    @SerializedName("loved") var lovedAlbums: List<AlbumDTO>? = null
 )
 
-class AlbumsDTO (
-    @SerializedName("album")  var albums       : List<AlbumDTO>? = null
+class AlbumsDTO(
+    @SerializedName("album") var albums: List<AlbumDTO>? = null
 )

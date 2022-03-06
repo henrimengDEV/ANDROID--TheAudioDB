@@ -8,7 +8,7 @@ import javax.inject.Singleton
 //TODO implement ArtistRepo mais faut gérer ArtistEntity -> Artist
 
 @Singleton
-class SQLiteTracksRepository @Inject constructor(private val trackDAO: TrackDAO) {
+class SQLiteTracks @Inject constructor(private val trackDAO: TrackDAO) {
 
     fun getByName(name: String): Track {
         return this.trackDAO.getByName(name)
