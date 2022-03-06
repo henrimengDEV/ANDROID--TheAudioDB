@@ -11,6 +11,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/app_guideline_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="12dp" />
+
         <ImageView
             android:id="@+id/artist_view_img"
             android:layout_width="match_parent"
@@ -22,28 +29,48 @@
             tools:ignore="ContentDescription"
             tools:layout_editor_absoluteX="1dp" />
 
-        <LinearLayout
-            android:id="@+id/artist_view_banner"
-            android:layout_width="match_parent"
+
+
+
+        <ImageView
+            android:id="@+id/artist_view_back"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            app:layout_constraintTop_toTopOf="@id/artist_view_img">
+            android:src="@drawable/back_icon"
+            app:layout_constraintLeft_toLeftOf="@id/artist_view_img"
+            app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
-            <ImageView
-                android:id="@+id/artist_view_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/back_icon" />
+        <TextView
+            android:id="@+id/artist_view_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="@id/artist_view_img"
+            app:layout_constraintRight_toRightOf="@id/artist_view_img"
+            app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="315dp"
-                android:layout_marginTop="15dp"
-                android:src="@drawable/circle" />
 
-        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/artist_view_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/circle"
+            app:layout_constraintRight_toRightOf="@id/artist_view_img"
+            app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
+
+        <ImageView
+            android:id="@+id/artist_view_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="11dp"
+            app:layout_constraintRight_toRightOf="@id/artist_view_like"
+            app:layout_constraintBottom_toBottomOf="@id/artist_view_like"
+            />
+
 
         <LinearLayout
             android:id="@+id/artist_view_description"

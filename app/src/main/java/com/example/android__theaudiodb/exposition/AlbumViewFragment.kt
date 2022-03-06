@@ -29,16 +29,22 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 
     private var album: Album? = null
     private val viewModel: TracksViewModel by activityViewModels()
+    private var like: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         album = arguments?.get("album") as Album?
         setUpRecyclerView(view)
         setUpBackBtn(view)
         setUpView(view)
+        setUpLikeBtn(view)
         hideMenu(view)
     }
 
     private fun setUpView(view: View) {
+        when(like){
+            true -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_on)
+            false -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_off)
+        }
         view.findViewById<TextView>(R.id.album_view_name).text = this.album?.name
         view.findViewById<TextView>(R.id.album_view_description).text = this.album?.descriptionFR
         Picasso.get()
@@ -52,6 +58,18 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 //        if (this.album.votes != null)
 //            view.findViewById<TextView>(R.id.album_view_votes).visibility = View.GONE
 //        view.findViewById<TextView>(R.id.album_view_votes_number).text = this.album.
+    }
+
+    private fun setUpLikeBtn(view: View) {
+        view.findViewById<ImageView>(R.id.album_view_like).setOnClickListener {
+            this.like = !this.like
+
+            when(like){
+                true -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
+                false -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
+            }
+        }
+
     }
 
     private fun setUpBackBtn(view: View) {

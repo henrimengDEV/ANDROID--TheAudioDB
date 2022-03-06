@@ -25,19 +25,25 @@ import dagger.hilt.android.AndroidEntryPoint
 class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     private var artist: Artist? = null
+    private var like: Boolean = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         artist = arguments?.get("artist") as Artist?
-        println("pazodiazjpodjazpodpzaojdazjdopazd  " + artist)
+
         FileUtils.hideMenu(view)
         setUpAlbumsRecyclerView(view)
         setUpFavTracksRecyclerView(view)
         setUpBackBtn(view)
         setUpView(view)
+        setUpLikeBtn(view)
         FileUtils.hideMenu(view)
     }
 
     private fun setUpView(view: View) {
+        when(like){
+            true -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_on)
+            false -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_off)
+        }
         Picasso.get()
             .load(this.artist?.artistLogoURL)
             .memoryPolicy(MemoryPolicy.NO_CACHE)
@@ -50,7 +56,22 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
         view.findViewById<TextView>(R.id.artist_view_description_city).text = this.artist?.country // Artiste ville
         view.findViewById<TextView>(R.id.artist_view_bio).text = this.artist?.biographyFR // Artiste bio
         view.findViewById<TextView>(R.id.artist_view_album_count).text = "Album (" + 12 + ")" // Artiste nombre d'album
+
+
     }
+
+    private fun setUpLikeBtn(view: View) {
+        view.findViewById<ImageView>(R.id.artist_view_like).setOnClickListener {
+            this.like = !this.like
+
+            when(like){
+                true -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_on)
+                false -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_off)
+            }
+        }
+
+    }
+
 
     //Back Button
     private fun setUpBackBtn(view: View) {
