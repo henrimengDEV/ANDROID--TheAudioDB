@@ -18,7 +18,7 @@ class Album(
     @ColumnInfo(name = "artist_name") val artistName: String? = null,
     @ColumnInfo(name = "likes") val likes: Int? = null,
     @ColumnInfo(name = "score") val score: String? = null,
-    @ColumnInfo(name = "favorite") var favorite: String? = null
+    @ColumnInfo(name = "favorite") var favorite: Boolean? = null
 ) : Parcelable {
     override fun toString(): String {
         return "Album(id=$id, name=$name, genre=$genre, descriptionEN=$descriptionEN, descriptionFR=$descriptionFR, photoURL=$photoURL, artistName=$artistName, likes=$likes, note=$score)"

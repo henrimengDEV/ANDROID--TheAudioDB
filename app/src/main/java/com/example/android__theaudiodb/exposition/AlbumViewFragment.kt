@@ -45,13 +45,13 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
     private fun setUpAlbum() {
         album = arguments?.get("album") as Album?
         if (album?.favorite === null)
-            this.album?.favorite = "false"
+            this.album?.favorite = false
     }
 
     private fun setUpView(view: View) {
         when (album?.favorite) {
-            "true" -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
-            "false" -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
+            true -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
+            false -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
         }
         view.findViewById<TextView>(R.id.album_view_name).text = this.album?.name
         view.findViewById<TextView>(R.id.album_view_description).text = this.album?.descriptionFR
@@ -74,18 +74,14 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 
     private fun setUpLikeBtn(view: View) {
         view.findViewById<ImageView>(R.id.album_view_like).setOnClickListener {
-            if (this.album?.favorite === "true") {
-                this.album?.favorite = "false"
-            } else {
-                this.album?.favorite = "true"
-            }
+            this.album?.favorite = !this.album?.favorite!!
 
             when (album?.favorite) {
-                "true" -> {
+                true -> {
                     albumViewModel.updateAlbum(this.album!!)
                     view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
                 }
-                "false" -> {
+                false -> {
                     albumViewModel.updateAlbum(this.album!!)
                     view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
                 }
