@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.parole
+package com.example.android__theaudiodb.exposition.lyrics
 
 import android.os.Bundle
 import android.view.View
@@ -7,12 +7,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.android__theaudiodb.R
+import com.example.android__theaudiodb.exposition.shared.FileUtils.Companion.hideMenu
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LyricsViewFragment : Fragment(R.layout.fragment_lyrics_view) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        hideMenu(view)
         setUpBackBtn(view)
         view.findViewById<ImageView>(R.id.lyrics_view_miniature).setImageResource(R.drawable.artist) //miniature Parole
         view.findViewById<TextView>(R.id.lyrics_view_track).text = "Titre" // Musique parole

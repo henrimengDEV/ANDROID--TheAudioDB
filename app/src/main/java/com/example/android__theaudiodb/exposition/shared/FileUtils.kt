@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.shared.adapter
+package com.example.android__theaudiodb.exposition.shared
 
 import android.view.View
 import android.view.ViewGroup

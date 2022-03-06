@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.android__theaudiodb.R
+import com.example.android__theaudiodb.exposition.shared.FileUtils
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -11,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class RankingFragment : Fragment(R.layout.fragment_ranking) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        FileUtils.showMenu(view)
         changeToMusicTitlesView()
         setUpTabLayout(view.findViewById(R.id.ranking_tab))
     }

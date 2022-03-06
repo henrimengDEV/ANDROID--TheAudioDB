@@ -15,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
+import com.example.android__theaudiodb.exposition.shared.FileUtils
 import com.example.android__theaudiodb.exposition.shared.viewmodel.AlbumsViewModel
 import com.example.android__theaudiodb.exposition.shared.viewmodel.ArtistViewModel
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
@@ -33,6 +34,7 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
     var searchInput: String = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        FileUtils.showMenu(view)
         setUpArtistsRecyclerView(view)
         setUpAlbumsRecyclerView(view)
 

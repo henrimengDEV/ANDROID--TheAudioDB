@@ -43,7 +43,7 @@ class AlbumsRecyclerViewAdapter(
             when(sourceDestination) {
                 "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_albumViewFragment, bundle)
                 "FavoritesFragment" -> Navigation.findNavController(it).navigate(R.id.action_favoritesFragment_to_albumViewFragment, bundle)
-                "RankingTabAlbumsFragment" -> Navigation.findNavController(it).navigate(R.id.action_itemFragment_to_albumViewFragment, bundle)
+                "RankingTabAlbumsFragment" -> Navigation.findNavController(it).navigate(R.id.action_rankingFragment_to_albumViewFragment, bundle)
             }
         }
         holder.albumItemTitle.text = item.name
@@ -56,7 +56,6 @@ class AlbumsRecyclerViewAdapter(
         val albumItemImg: ImageView = binding.albumItemImg
         val albumItemTitle: TextView = binding.albumItemTitle
         val albumItemArtistName: TextView = binding.albumItemArtistName
-        val albumItemNext: ImageView = binding.albumItemNext
     }
 
 }

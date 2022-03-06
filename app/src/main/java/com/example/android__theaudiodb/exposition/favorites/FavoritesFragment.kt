@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
+import com.example.android__theaudiodb.exposition.shared.FileUtils
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
@@ -15,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        FileUtils.showMenu(view)
         setUpArtistsRecyclerView(view)
         setUpAlbumsRecyclerView(view)
 

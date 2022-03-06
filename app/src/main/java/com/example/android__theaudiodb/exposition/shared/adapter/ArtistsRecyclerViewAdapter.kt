@@ -39,7 +39,7 @@ class ArtistsRecyclerViewAdapter(
             .error(R.drawable.ic_no_image)
             .noFade()
             .into(holder.artistItemImg)
-        holder.artistItemNext.setOnClickListener {
+        holder.itemView.setOnClickListener {
             val bundle = bundleOf("sourceDestination" to sourceDestination)
             when(sourceDestination) {
                 "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_artistFragment, bundle)
@@ -55,7 +55,6 @@ class ArtistsRecyclerViewAdapter(
     inner class ViewHolder(binding: FragmentArtistBinding) : RecyclerView.ViewHolder(binding.root) {
         val artistItemImg: ImageView = binding.artistItemImg
         val artistItemName: TextView = binding.artistItemName
-        val artistItemNext: ImageView = binding.artistItemNext
     }
 
 }

@@ -9,54 +9,94 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.databinding.FragmentMusicTitleBinding
+import com.example.android__theaudiodb.databinding.FragmentMusicTitleV2Binding
 import com.example.android__theaudiodb.domain.track.Track
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
+import kotlin.reflect.typeOf
 
 class TracksRecyclerViewAdapter(
     private val values: List<Track>,
     private val sourceDestination: String
-) : RecyclerView.Adapter<TracksRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            FragmentMusicTitleBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.trackItemPos.text = (position.inc()).toString()
-        Picasso.get()
-            .load(item.trackImageURL)
-            .memoryPolicy(MemoryPolicy.NO_CACHE)
-            .networkPolicy(NetworkPolicy.NO_CACHE)
-            .error(R.drawable.ic_no_image)
-            .noFade()
-            .into(holder.trackItemImg)
-        holder.trackItemName.setOnClickListener {
-            val bundle = bundleOf("sourceDestination" to sourceDestination)
-            when(sourceDestination) {
-                "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_artistFragment, bundle)
-                "FavoritesFragment" -> Navigation.findNavController(it).navigate(R.id.action_favoritesFragment_to_artistFragment, bundle)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (sourceDestination) {
+            "AlbumViewFragment" -> {
+                ViewHolderV2(
+                    FragmentMusicTitleV2Binding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+            else -> {
+                ViewHolder(
+                    FragmentMusicTitleBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
             }
         }
-        holder.trackItemName.text = item.name
-        holder.trackItemDesc.text = item.artist
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val item = values[position]
+
+        when(holder) {
+            is ViewHolder -> {
+                holder.trackItemPos.text = (position.inc()).toString()
+                Picasso.get()
+                    .load(item.trackImageURL)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .error(R.drawable.ic_no_image)
+                    .noFade()
+                    .into(holder.trackItemImg)
+                holder.trackItemName.text = item.name
+                holder.trackItemDesc.text = item.artist
+            }
+            is ViewHolderV2 -> {
+                holder.trackItemPos.text = position.toString()
+                holder.itemTitle.text = item.name
+            }
+        }
+
+        holder.itemView.setOnClickListener {
+            val bundle = bundleOf("sourceDestination" to sourceDestination)
+            when (sourceDestination) {
+                "SearchingFragment" -> Navigation.findNavController(it)
+                    .navigate(R.id.action_searchingFragment_to_artistFragment, bundle)
+                "FavoritesFragment" -> Navigation.findNavController(it)
+                    .navigate(R.id.action_favoritesFragment_to_artistFragment, bundle)
+                "RankingTabAlbumsFragment", "RankingTabMusicTitlesFragment" -> Navigation.findNavController(it)
+                    .navigate(R.id.action_rankingFragment_to_lyricsViewFragment, bundle)
+                "AlbumViewFragment" -> Navigation.findNavController(it)
+                    .navigate(R.id.action_albumViewFragment_to_lyricsViewFragment, bundle)
+            }
+        }
     }
 
     override fun getItemCount(): Int = values.size
+
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
 
     inner class ViewHolder(binding: FragmentMusicTitleBinding) : RecyclerView.ViewHolder(binding.root) {
         val trackItemPos: TextView = binding.itemPosition
         val trackItemImg: ImageView = binding.itemImage
         val trackItemName: TextView = binding.itemNumber
         val trackItemDesc: TextView = binding.content
+    }
+
+    inner class ViewHolderV2(binding: FragmentMusicTitleV2Binding) : RecyclerView.ViewHolder(binding.root) {
+        val trackItemPos: TextView = binding.itemPosition
+        val itemTitle: TextView = binding.itemTitle
     }
 
 }

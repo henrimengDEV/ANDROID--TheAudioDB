@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/itemFragment">
+    app:startDestination="@id/rankingFragment">
 
     <fragment
-        android:id="@+id/itemFragment"
+        android:id="@+id/rankingFragment"
         android:name="com.example.android__theaudiodb.exposition.ranking.RankingFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_ranking" >
         <action
-            android:id="@+id/action_itemFragment_to_albumViewFragment"
+            android:id="@+id/action_rankingFragment_to_albumViewFragment"
             app:destination="@id/albumViewFragment" />
         <action
-            android:id="@+id/action_itemFragment_to_lyricsViewFragment"
+            android:id="@+id/action_rankingFragment_to_lyricsViewFragment"
             app:destination="@id/lyricsViewFragment" />
     </fragment>
     <fragment
@@ -46,47 +46,19 @@
         android:name="com.example.android__theaudiodb.exposition.artists.ArtistViewFragment"
         android:label="ArtistFragment">
         <action
-            android:id="@+id/action_artistFragment_to_searchingFragment"
-            app:destination="@id/searchingFragment" />
-        <action
             android:id="@+id/action_artistFragment_to_lyricsViewFragment"
             app:destination="@id/lyricsViewFragment" />
-        <action
-            android:id="@+id/action_artistFragment_to_searchingFragment2"
-            app:destination="@id/searchingFragment" />
-        <action
-            android:id="@+id/action_artistFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumViewFragment"
         android:name="com.example.android__theaudiodb.exposition.album.AlbumViewFragment"
         android:label="AlbumViewFragment" >
         <action
-            android:id="@+id/action_albumViewFragment_to_searchingFragment"
-            app:destination="@id/searchingFragment" />
-        <action
-            android:id="@+id/action_albumViewFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
-        <action
-            android:id="@+id/action_albumViewFragment_to_itemFragment"
-            app:destination="@id/itemFragment" />
-        <action
             android:id="@+id/action_albumViewFragment_to_lyricsViewFragment"
             app:destination="@id/lyricsViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/lyricsViewFragment"
-        android:name="com.example.android__theaudiodb.exposition.parole.LyricsViewFragment"
-        android:label="LyricsViewFragment" >
-        <action
-            android:id="@+id/action_lyricsViewFragment_to_albumViewFragment2"
-            app:destination="@id/albumViewFragment" />
-        <action
-            android:id="@+id/action_lyricsViewFragment_to_artistFragment"
-            app:destination="@id/artistFragment" />
-        <action
-            android:id="@+id/action_lyricsViewFragment_to_itemFragment"
-            app:destination="@id/itemFragment" />
-    </fragment>
+        android:name="com.example.android__theaudiodb.exposition.lyrics.LyricsViewFragment"
+        android:label="LyricsViewFragment" />
 </navigation>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/itemFragment"
+    <item android:id="@+id/rankingFragment"
         android:icon="@drawable/ranking_icon"
         android:title="@string/ranking"/>
     <item android:id="@+id/searchingFragment"

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
-import com.example.android__theaudiodb.exposition.shared.adapter.FileUtils
+import com.example.android__theaudiodb.exposition.shared.FileUtils
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
 import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        FileUtils.hideMenu(view)
         setUpAlbumsRecyclerView(view)
         setUpFavTracksRecyclerView(view)
         setUpBackBtn(view)
@@ -35,7 +36,6 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
     //Back Button
     private fun setUpBackBtn(view: View) {
         view.findViewById<ImageView>(R.id.artist_view_back).setOnClickListener {
-            FileUtils.showMenu(view)
             Navigation.findNavController(view).navigateUp()
         }
     }
