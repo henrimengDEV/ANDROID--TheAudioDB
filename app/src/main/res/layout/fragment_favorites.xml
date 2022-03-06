@@ -54,7 +54,7 @@
             android:id="@+id/favorites_separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="@dimen/common_margin"
+            android:layout_marginVertical="@dimen/common_space"
             android:background="@color/grey_200"
             app:layout_constraintTop_toBottomOf="@id/ranking_header" />
 
@@ -69,12 +69,12 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/common_margin" />
+                android:layout_height="@dimen/common_space" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/semi_common_margin"
+                android:layout_marginBottom="@dimen/semi_common_space"
                 android:text="@string/favorites_body_artists"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sub_title" />
@@ -82,23 +82,23 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginVertical="@dimen/semi_common_margin"
+                android:layout_marginVertical="@dimen/semi_common_space"
                 android:background="@color/grey_200" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/favorites_artists"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/fragment_artist" />
+                tools:listitem="@layout/list_item_artist" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/common_margin" />
+                android:layout_height="@dimen/common_space" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/semi_common_margin"
+                android:layout_marginBottom="@dimen/semi_common_space"
                 android:text="@string/favorites_body_albums"
                 android:textColor="@color/black"
                 android:textSize="@dimen/sub_title" />
@@ -106,14 +106,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginVertical="@dimen/semi_common_margin"
+                android:layout_marginVertical="@dimen/semi_common_space"
                 android:background="@color/grey_200" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/favorites_albums"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/fragment_artist" />
+                tools:listitem="@layout/list_item_artist" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

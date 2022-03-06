@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.shared.adapter
+package com.example.android__theaudiodb.exposition.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

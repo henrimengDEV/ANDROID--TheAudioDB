@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.shared.viewmodel
+package com.example.android__theaudiodb.exposition.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

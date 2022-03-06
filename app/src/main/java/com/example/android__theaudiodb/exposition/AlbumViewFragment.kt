@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.album
+package com.example.android__theaudiodb.exposition
 
 import android.os.Bundle
 import android.view.View
@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.domain.album.Album
-import com.example.android__theaudiodb.exposition.shared.FileUtils.Companion.hideMenu
-import com.example.android__theaudiodb.exposition.shared.adapter.TracksRecyclerViewAdapter
-import com.example.android__theaudiodb.exposition.shared.viewmodel.TracksViewModel
+import com.example.android__theaudiodb.exposition.common.FileUtils.Companion.hideMenu
+import com.example.android__theaudiodb.exposition.adapter.TracksRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.viewmodel.TracksViewModel
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso

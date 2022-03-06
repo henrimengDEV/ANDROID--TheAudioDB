@@ -1,10 +1,10 @@
-package com.example.android__theaudiodb.exposition.ranking
+package com.example.android__theaudiodb.exposition
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.exposition.shared.FileUtils
+import com.example.android__theaudiodb.exposition.common.FileUtils
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 

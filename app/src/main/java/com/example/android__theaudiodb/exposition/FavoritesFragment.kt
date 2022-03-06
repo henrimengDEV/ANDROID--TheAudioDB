@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.favorites
+package com.example.android__theaudiodb.exposition
 
 import android.os.Bundle
 import android.view.View
@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.exposition.shared.FileUtils
-import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
-import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.common.FileUtils
+import com.example.android__theaudiodb.exposition.adapter.AlbumsRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
 import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 import dagger.hilt.android.AndroidEntryPoint

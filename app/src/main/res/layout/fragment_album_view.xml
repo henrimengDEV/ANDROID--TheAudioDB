@@ -32,11 +32,10 @@
         <!--  HEADER  -->
 
         <ImageView
-            android:id="@+id/lyrics_view_img"
+            android:id="@+id/album_view_img"
             android:layout_width="match_parent"
             android:layout_height="223dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/planet_explosion"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -45,17 +44,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:src="@drawable/back_icon"
-            app:layout_constraintLeft_toLeftOf="@id/lyrics_view_img"
+            app:layout_constraintLeft_toLeftOf="@id/album_view_img"
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
         <TextView
             android:id="@+id/album_view_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="J'aime les nem"
             android:textColor="@color/white"
-            app:layout_constraintLeft_toLeftOf="@id/lyrics_view_img"
-            app:layout_constraintRight_toRightOf="@id/lyrics_view_img"
+            app:layout_constraintLeft_toLeftOf="@id/album_view_img"
+            app:layout_constraintRight_toRightOf="@id/album_view_img"
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
         <ImageView
@@ -64,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:background="@drawable/circle"
-            app:layout_constraintRight_toRightOf="@id/lyrics_view_img"
+            app:layout_constraintRight_toRightOf="@id/album_view_img"
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
 
@@ -74,13 +72,13 @@
             android:id="@+id/album_view_votes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/common_margin"
+            android:layout_marginVertical="@dimen/common_space"
             android:background="@drawable/rectangle_rounded"
             android:orientation="horizontal"
             android:padding="12dp"
             app:layout_constraintLeft_toRightOf="@id/app_guideline_left"
             app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
-            app:layout_constraintTop_toBottomOf="@id/lyrics_view_img">
+            app:layout_constraintTop_toBottomOf="@id/album_view_img">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -88,7 +86,7 @@
                 android:background="@drawable/rectangle_rounded_white"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/semi_common_margin"
+                android:paddingHorizontal="@dimen/semi_common_space"
                 android:paddingVertical="2dp">
 
                 <ImageView
@@ -104,9 +102,10 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/album_view_votes_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/common_margin"
+                android:layout_marginStart="@dimen/common_space"
                 android:text="348 votes"
                 android:textColor="@color/black" />
 
@@ -116,7 +115,7 @@
             android:id="@+id/album_view_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/common_margin"
+            android:paddingTop="@dimen/common_space"
             android:paddingBottom="30dp"
             android:text="@string/Lorem"
             android:textColor="@color/grey"
@@ -131,7 +130,7 @@
             android:id="@+id/album_view_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/semi_common_margin"
+            android:layout_marginBottom="@dimen/semi_common_space"
             android:text="@string/album_view_title"
             android:textColor="@color/black"
             android:textSize="@dimen/sub_title"
@@ -143,7 +142,7 @@
             android:id="@+id/album_view_separator"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginVertical="@dimen/common_margin"
+            android:layout_marginVertical="@dimen/common_space"
             android:background="@color/grey_200"
             app:layout_constraintLeft_toRightOf="@id/app_guideline_left"
             app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
@@ -153,11 +152,11 @@
             android:id="@+id/album_view_albums"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/semi_common_margin"
+            android:layout_marginTop="@dimen/semi_common_space"
             app:layout_constraintLeft_toRightOf="@id/app_guideline_left"
             app:layout_constraintRight_toLeftOf="@id/app_guideline_right"
             app:layout_constraintTop_toBottomOf="@id/album_view_separator"
-            tools:listitem="@layout/fragment_music_title" />
+            tools:listitem="@layout/list_item_track" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -11,9 +11,9 @@
         android:id="@+id/music_titles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/common_margin"
+        android:layout_marginVertical="@dimen/common_space"
         tools:ignore="MissingConstraints"
-        tools:listitem="@layout/fragment_music_title" />
+        tools:listitem="@layout/list_item_track" />
 
     <ProgressBar
         android:id="@+id/indeterminateBar"

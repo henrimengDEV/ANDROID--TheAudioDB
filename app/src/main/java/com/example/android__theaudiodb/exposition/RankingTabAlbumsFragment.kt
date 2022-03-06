@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.ranking
+package com.example.android__theaudiodb.exposition
 
 import android.os.Bundle
 import android.view.View
@@ -12,8 +12,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.exposition.shared.viewmodel.AlbumsViewModel
-import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.viewmodel.AlbumsViewModel
+import com.example.android__theaudiodb.exposition.adapter.AlbumsRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

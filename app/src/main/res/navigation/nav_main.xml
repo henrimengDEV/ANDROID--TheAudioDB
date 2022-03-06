@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/rankingFragment"
-        android:name="com.example.android__theaudiodb.exposition.ranking.RankingFragment"
+        android:name="com.example.android__theaudiodb.exposition.RankingFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_ranking" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchingFragment"
-        android:name="com.example.android__theaudiodb.exposition.searching.SearchingFragment"
+        android:name="com.example.android__theaudiodb.exposition.SearchingFragment"
         android:label="fragment_searching"
         tools:layout="@layout/fragment_searching">
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.example.android__theaudiodb.exposition.favorites.FavoritesFragment"
+        android:name="com.example.android__theaudiodb.exposition.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/artistFragment"
-        android:name="com.example.android__theaudiodb.exposition.artists.ArtistViewFragment"
+        android:name="com.example.android__theaudiodb.exposition.ArtistViewFragment"
         android:label="ArtistFragment">
         <action
             android:id="@+id/action_artistFragment_to_lyricsViewFragment"
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/albumViewFragment"
-        android:name="com.example.android__theaudiodb.exposition.album.AlbumViewFragment"
+        android:name="com.example.android__theaudiodb.exposition.AlbumViewFragment"
         android:label="AlbumViewFragment" >
         <action
             android:id="@+id/action_albumViewFragment_to_lyricsViewFragment"
@@ -59,6 +59,6 @@
     </fragment>
     <fragment
         android:id="@+id/lyricsViewFragment"
-        android:name="com.example.android__theaudiodb.exposition.lyrics.LyricsViewFragment"
+        android:name="com.example.android__theaudiodb.exposition.TrackViewFragment"
         android:label="LyricsViewFragment" />
 </navigation>

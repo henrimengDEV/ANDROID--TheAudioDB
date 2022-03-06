@@ -3,6 +3,10 @@
     android:id="@+id/music_title_v2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingTop="@dimen/semi_common_space"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="horizontal">
 
     <TextView
@@ -16,7 +20,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_margin"
+        android:layout_marginStart="@dimen/common_space"
         android:orientation="vertical">
 
         <TextView
@@ -30,7 +34,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginVertical="@dimen/semi_common_margin"
+            android:layout_marginTop="@dimen/semi_common_space"
             android:background="@color/grey_200" />
     </LinearLayout>
 

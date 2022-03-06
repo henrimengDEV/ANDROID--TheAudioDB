@@ -46,7 +46,7 @@
             android:id="@+id/ranking_tab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/common_margin"
+            android:layout_marginVertical="@dimen/common_space"
             app:layout_constraintTop_toBottomOf="@id/ranking_header">
 
             <com.google.android.material.tabs.TabItem

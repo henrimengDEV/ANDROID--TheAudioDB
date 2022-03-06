@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.searching
+package com.example.android__theaudiodb.exposition
 
 import android.app.SearchManager
 import android.content.Context
@@ -15,11 +15,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.exposition.shared.FileUtils
-import com.example.android__theaudiodb.exposition.shared.viewmodel.AlbumsViewModel
-import com.example.android__theaudiodb.exposition.shared.viewmodel.ArtistViewModel
-import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
-import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.common.FileUtils
+import com.example.android__theaudiodb.exposition.viewmodel.AlbumsViewModel
+import com.example.android__theaudiodb.exposition.viewmodel.ArtistViewModel
+import com.example.android__theaudiodb.exposition.adapter.AlbumsRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.adapter.ArtistsRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
