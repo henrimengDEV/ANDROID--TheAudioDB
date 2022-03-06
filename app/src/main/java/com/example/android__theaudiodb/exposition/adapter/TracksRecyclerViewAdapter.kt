@@ -8,13 +8,12 @@ import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.databinding.FragmentMusicTitleBinding
-import com.example.android__theaudiodb.databinding.FragmentMusicTitleV2Binding
+import com.example.android__theaudiodb.databinding.ListItemTrackBinding
+import com.example.android__theaudiodb.databinding.ListItemTrackV2Binding
 import com.example.android__theaudiodb.domain.track.Track
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
-import kotlin.reflect.typeOf
 
 class TracksRecyclerViewAdapter(
     private val values: List<Track>,
@@ -25,7 +24,7 @@ class TracksRecyclerViewAdapter(
         return when (sourceDestination) {
             "AlbumViewFragment" -> {
                 ViewHolderV2(
-                    FragmentMusicTitleV2Binding.inflate(
+                    ListItemTrackV2Binding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -34,7 +33,7 @@ class TracksRecyclerViewAdapter(
             }
             else -> {
                 ViewHolder(
-                    FragmentMusicTitleBinding.inflate(
+                    ListItemTrackBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -87,14 +86,14 @@ class TracksRecyclerViewAdapter(
         return super.getItemViewType(position)
     }
 
-    inner class ViewHolder(binding: FragmentMusicTitleBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: ListItemTrackBinding) : RecyclerView.ViewHolder(binding.root) {
         val trackItemPos: TextView = binding.itemPosition
         val trackItemImg: ImageView = binding.itemImage
         val trackItemName: TextView = binding.itemNumber
         val trackItemDesc: TextView = binding.content
     }
 
-    inner class ViewHolderV2(binding: FragmentMusicTitleV2Binding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolderV2(binding: ListItemTrackV2Binding) : RecyclerView.ViewHolder(binding.root) {
         val trackItemPos: TextView = binding.itemPosition
         val itemTitle: TextView = binding.itemTitle
     }

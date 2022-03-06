@@ -3,6 +3,7 @@ package com.example.android__theaudiodb.exposition.album
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,22 +14,45 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
+import com.example.android__theaudiodb.domain.album.Album
 import com.example.android__theaudiodb.exposition.shared.FileUtils.Companion.hideMenu
 import com.example.android__theaudiodb.exposition.shared.adapter.TracksRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.viewmodel.TracksViewModel
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 
+    private var album: Album? = null
     private val viewModel: TracksViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        album = arguments?.get("album") as Album?
         setUpRecyclerView(view)
         setUpBackBtn(view)
-        view.findViewById<ImageView>(R.id.lyrics_view_img).setImageResource(R.drawable.artist)
+        setUpView(view)
+        view.findViewById<ImageView>(R.id.album_view_img).setImageResource(R.drawable.artist)
         hideMenu(view)
+    }
+
+    private fun setUpView(view: View) {
+        view.findViewById<TextView>(R.id.album_view_name).text = this.album?.name
+        view.findViewById<TextView>(R.id.album_view_description).text = this.album?.descriptionFR
+        Picasso.get()
+            .load(this.album?.photoURL)
+            .memoryPolicy(MemoryPolicy.NO_CACHE)
+            .networkPolicy(NetworkPolicy.NO_CACHE)
+            .error(R.drawable.ic_no_image)
+            .noFade()
+            .into(view.findViewById<ImageView>(R.id.album_view_img))
+
+//        if (this.album.votes != null)
+//            view.findViewById<TextView>(R.id.album_view_votes).visibility = View.GONE
+//        view.findViewById<TextView>(R.id.album_view_votes_number).text = this.album.
     }
 
     private fun setUpBackBtn(view: View) {

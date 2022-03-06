@@ -1,4 +1,4 @@
-package com.example.android__theaudiodb.exposition.lyrics
+package com.example.android__theaudiodb.exposition.track
 
 import android.os.Bundle
 import android.view.View
@@ -11,7 +11,7 @@ import com.example.android__theaudiodb.exposition.shared.FileUtils.Companion.hid
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LyricsViewFragment : Fragment(R.layout.fragment_lyrics_view) {
+class TrackViewFragment : Fragment(R.layout.fragment_track_view) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         hideMenu(view)

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.databinding.FragmentArtistBinding
+import com.example.android__theaudiodb.databinding.ListItemArtistBinding
 
 import com.example.android__theaudiodb.domain.artist.Artist
 import com.squareup.picasso.MemoryPolicy
@@ -22,7 +22,7 @@ class ArtistsRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            FragmentArtistBinding.inflate(
+            ListItemArtistBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -52,7 +52,7 @@ class ArtistsRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentArtistBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: ListItemArtistBinding) : RecyclerView.ViewHolder(binding.root) {
         val artistItemImg: ImageView = binding.artistItemImg
         val artistItemName: TextView = binding.artistItemName
     }

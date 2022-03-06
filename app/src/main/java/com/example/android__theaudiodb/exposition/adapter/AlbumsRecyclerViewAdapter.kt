@@ -8,7 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.databinding.FragmentAlbumBinding
+import com.example.android__theaudiodb.databinding.ListItemAlbumBinding
 import com.example.android__theaudiodb.domain.album.Album
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
@@ -21,7 +21,7 @@ class AlbumsRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            FragmentAlbumBinding.inflate(
+            ListItemAlbumBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -39,7 +39,7 @@ class AlbumsRecyclerViewAdapter(
             .noFade()
             .into(holder.albumItemImg)
         holder.itemView.setOnClickListener {
-            val bundle = bundleOf("sourceDestination" to sourceDestination)
+            val bundle = bundleOf("album" to item)
             when(sourceDestination) {
                 "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_albumViewFragment, bundle)
                 "FavoritesFragment" -> Navigation.findNavController(it).navigate(R.id.action_favoritesFragment_to_albumViewFragment, bundle)
@@ -52,7 +52,7 @@ class AlbumsRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentAlbumBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(binding: ListItemAlbumBinding) : RecyclerView.ViewHolder(binding.root) {
         val albumItemImg: ImageView = binding.albumItemImg
         val albumItemTitle: TextView = binding.albumItemTitle
         val albumItemArtistName: TextView = binding.albumItemArtistName
