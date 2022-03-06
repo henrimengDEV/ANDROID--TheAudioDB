@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.FileUtils
-import com.example.android__theaudiodb.exposition.shared.adapter.MusicTitlesRecyclerViewAdapter
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
 import com.example.android__theaudiodb.infrastructure.InMemoryArtists
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +50,7 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     private fun setUpFavTracksRecyclerView(view: View) {
         view.findViewById<RecyclerView>(R.id.artist_fav_tracks).apply {
-            adapter = MusicTitlesRecyclerViewAdapter(InMemoryArtists.getAll(), "ArtistViewFragment")
+            adapter = ArtistsRecyclerViewAdapter(InMemoryArtists.getAll(), "ArtistViewFragment")
             layoutManager = LinearLayoutManager(activity)
         }
     }

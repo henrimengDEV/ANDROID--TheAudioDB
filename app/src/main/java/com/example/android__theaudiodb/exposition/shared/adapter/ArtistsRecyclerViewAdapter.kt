@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.databinding.FragmentArtistBinding
 
 import com.example.android__theaudiodb.domain.artist.Artist
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 
 class ArtistsRecyclerViewAdapter(
     private val values: List<Artist>,
@@ -31,13 +32,20 @@ class ArtistsRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.artistItemImg.setImageResource(R.drawable.artist)
-        holder.itemView.setOnClickListener {
+        Picasso.get()
+            .load(item.artistLogoURL)
+            .memoryPolicy(MemoryPolicy.NO_CACHE)
+            .networkPolicy(NetworkPolicy.NO_CACHE)
+            .error(R.drawable.ic_no_image)
+            .noFade()
+            .into(holder.artistItemImg)
+        holder.artistItemNext.setOnClickListener {
             val bundle = bundleOf("sourceDestination" to sourceDestination)
             when(sourceDestination) {
                 "SearchingFragment" -> Navigation.findNavController(it).navigate(R.id.action_searchingFragment_to_artistFragment, bundle)
                 "FavoritesFragment" -> Navigation.findNavController(it).navigate(R.id.action_favoritesFragment_to_artistFragment, bundle)
             }
+
         }
         holder.artistItemName.text = item.name
     }

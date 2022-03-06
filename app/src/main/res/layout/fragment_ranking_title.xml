@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/music_titles"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/common_margin"
-    tools:listitem="@layout/fragment_music_title" />
+    android:layout_height="match_parent"
+    android:foregroundTint="#757575"
+    android:foregroundTintMode="src_over">
+
+    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/music_titles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/common_margin"
+        tools:ignore="MissingConstraints"
+        tools:listitem="@layout/fragment_music_title" />
+
+    <ProgressBar
+        android:id="@+id/indeterminateBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundTint="#8C8C8C"
+        android:foregroundTintMode="src_over"
+        android:indeterminate="true"
+        android:indeterminateTint="#686868"
+        android:visibility="invisible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
