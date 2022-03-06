@@ -17,6 +17,7 @@ import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.domain.album.Album
 import com.example.android__theaudiodb.exposition.common.FileUtils.Companion.hideMenu
 import com.example.android__theaudiodb.exposition.adapter.TracksRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.viewmodel.AlbumViewModel
 import com.example.android__theaudiodb.exposition.viewmodel.TracksViewModel
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
@@ -28,11 +29,11 @@ import kotlinx.coroutines.launch
 class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
 
     private var album: Album? = null
-    private val viewModel: TracksViewModel by activityViewModels()
-    private var like: Boolean = false
+    private val tracksViewModel: TracksViewModel by activityViewModels()
+    private val albumViewModel: AlbumViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        album = arguments?.get("album") as Album?
+        setUpAlbum()
         setUpRecyclerView(view)
         setUpBackBtn(view)
         setUpView(view)
@@ -40,10 +41,16 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
         hideMenu(view)
     }
 
+    private fun setUpAlbum() {
+        album = arguments?.get("album") as Album?
+        if (album?.favorite === null)
+            this.album?.favorite = "false"
+    }
+
     private fun setUpView(view: View) {
-        when(like){
-            true -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
-            false -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
+        when (album?.favorite) {
+            "true" -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
+            "false" -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
         }
         view.findViewById<TextView>(R.id.album_view_name).text = this.album?.name
         view.findViewById<TextView>(R.id.album_view_description).text = this.album?.descriptionFR
@@ -55,21 +62,34 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
             .noFade()
             .into(view.findViewById<ImageView>(R.id.album_view_img))
 
-//        if (this.album.votes != null)
-//            view.findViewById<TextView>(R.id.album_view_votes).visibility = View.GONE
-//        view.findViewById<TextView>(R.id.album_view_votes_number).text = this.album.
+        if (this.album?.likes === null || this.album?.score === null) {
+            view.findViewById<TextView>(R.id.album_view_notation).visibility = View.GONE
+        } else {
+            view.findViewById<TextView>(R.id.album_view_votes_number).text =
+                String.format(getString(R.string.votes), this.album?.likes)
+            view.findViewById<TextView>(R.id.album_view_score).text = this.album?.score.toString()
+        }
     }
 
     private fun setUpLikeBtn(view: View) {
         view.findViewById<ImageView>(R.id.album_view_like).setOnClickListener {
-            this.like = !this.like
+            if (this.album?.favorite === "true") {
+                this.album?.favorite = "false"
+            } else {
+                this.album?.favorite = "true"
+            }
 
-            when(like){
-                true -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
-                false -> view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
+            when (album?.favorite) {
+                "true" -> {
+                    albumViewModel.updateAlbum(this.album!!)
+                    view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_on)
+                }
+                "false" -> {
+                    albumViewModel.updateAlbum(this.album!!)
+                    view.findViewById<ImageView>(R.id.album_view_heart).setImageResource(R.drawable.like_off)
+                }
             }
         }
-
     }
 
     private fun setUpBackBtn(view: View) {
@@ -78,23 +98,22 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
         }
     }
 
-    //TODO Grosse bidouille
     private fun setUpRecyclerView(view: View) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getTopFiftyTracks()
+                tracksViewModel.getTopFiftyTracks()
             }
         }
-        viewModel.tracks.observe(viewLifecycleOwner) {
+        tracksViewModel.tracks.observe(viewLifecycleOwner) {
             view.findViewById<RecyclerView>(R.id.album_view_albums).apply {
                 adapter = TracksRecyclerViewAdapter(it, "AlbumViewFragment")
                 layoutManager = LinearLayoutManager(activity)
             }
         }
-        viewModel.errorMessage.observe(viewLifecycleOwner) {
+        tracksViewModel.errorMessage.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
-        viewModel.loading.observe(viewLifecycleOwner) {
+        tracksViewModel.loading.observe(viewLifecycleOwner) {
 //            if (it)
 //                loadingProgress.visibility = View.VISIBLE
 //            else

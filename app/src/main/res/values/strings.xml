@@ -20,4 +20,5 @@
     <string name="ranking">Classement</string>
     <string name="search">Recherche</string>
     <string name="favorites">Favoris</string>
+    <string name="votes">%1$d votes</string>
 </resources>

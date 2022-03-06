@@ -15,10 +15,12 @@ class Album(
     @ColumnInfo(name = "biography_en") val descriptionEN: String? = null,
     @ColumnInfo(name = "biography_fr") val descriptionFR: String? = null,
     @ColumnInfo(name = "photo_url") val photoURL: String? = null,
-    @ColumnInfo(name = "artist_name") val artistName: String? = null
+    @ColumnInfo(name = "artist_name") val artistName: String? = null,
+    @ColumnInfo(name = "likes") val likes: Int? = null,
+    @ColumnInfo(name = "score") val score: String? = null,
+    @ColumnInfo(name = "favorite") var favorite: String? = null
 ) : Parcelable {
     override fun toString(): String {
-        return "Album(id=$id, name=$name, genre=$genre, descriptionEN=$descriptionEN, descriptionFR=$descriptionFR, photoURL=$photoURL, artistName=$artistName)"
+        return "Album(id=$id, name=$name, genre=$genre, descriptionEN=$descriptionEN, descriptionFR=$descriptionFR, photoURL=$photoURL, artistName=$artistName, likes=$likes, note=$score)"
     }
 }
-

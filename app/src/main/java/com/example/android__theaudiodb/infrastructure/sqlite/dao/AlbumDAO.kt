@@ -3,8 +3,6 @@ package com.example.android__theaudiodb.infrastructure.sqlite.dao
 import androidx.room.*
 import com.example.android__theaudiodb.domain.album.Album
 
-//TODO simple copier coller de merde
-
 @Dao
 interface AlbumDAO {
 
@@ -12,10 +10,13 @@ interface AlbumDAO {
     fun getAll(): List<Album>
 
     @Query("SELECT * FROM Album WHERE id = :artistId")
-    fun getById(artistId: Int): Album
+    fun getById(artistId: Long): Album
 
     @Query("SELECT * FROM Album WHERE name = :artistName")
     fun getByName(artistName: String): Album
+
+    @Query("SELECT * FROM Album WHERE favorite = 1")
+    fun getFavorites(): List<Album>
 
     @Update
     fun updateAlbum(album: Album): Void

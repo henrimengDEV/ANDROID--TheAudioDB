@@ -40,7 +40,7 @@ data class AlbumDTO(
     var strDescriptionNO: String? = null,
     var strDescriptionIL: String? = null,
     var strDescriptionPL: String? = null,
-    var intLoved: String? = null,
+    var intLoved: Int? = null,
     var intScore: String? = null,
     var intScoreVotes: String? = null,
     var strReview: String? = null,

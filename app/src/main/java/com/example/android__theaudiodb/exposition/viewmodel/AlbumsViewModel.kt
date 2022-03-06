@@ -29,7 +29,7 @@ class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAl
             val response = APIRepository().getTopTenAlbumsOfAllTime()
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    albums.postValue(response.body()?.lovedAlbums?.asFlow()?.map{ AlbumAdapter.adapt(it)}?.toList())
+                    albums.postValue(response.body()?.lovedAlbums?.asFlow()?.map { AlbumAdapter.adapt(it) }?.toList())
                     loading.value = false
                 } else {
                     onError("Error : ${response.message()} ")
@@ -38,16 +38,25 @@ class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAl
         }
     }
 
+    fun getFavoritesAlbums() {
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            withContext(Dispatchers.Main) {
+                albums.postValue(albumsRepository.getFavorites())
+                println(albums)
+                loading.value = false
+            }
+        }
+    }
+
     fun getAlbumsByArtistName(artistName: String) {
         loading.value = true
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = APIRepository().getAllAlbumsByArtistName(artistName)
+            val responseAlbums: List<Album>? = response.body()?.albums?.asFlow()?.map { albumsRepository.add(AlbumAdapter.adapt(it)) }?.toList()
+
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful && response.body()?.albums != null) {
-                        albums.postValue(
-                            response.body()?.albums?.asFlow()?.map { AlbumAdapter.adapt(it) }
-                                ?.toList()
-                        )
+                    albums.postValue(responseAlbums!!)
                     loading.value = false
                 } else {
                     onError("Nothing found !")
@@ -58,7 +67,7 @@ class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAl
 
     private fun onError(message: String) {
         errorMessage.postValue(message)
-        loading.value = false
+//        loading.value = false
     }
 
     override fun onCleared() {

@@ -7,17 +7,37 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class SQLiteAlbums @Inject constructor(private val albumDAO: AlbumDAO) : Albums {
+class SQLiteAlbums @Inject constructor(private val albumDAO: AlbumDAO) {
 
-    override fun getByName(name: String): Album {
+    fun getByName(name: String): Album {
         return this.albumDAO.getByName(name)
     }
 
-    override fun getAll(): List<Album> {
+    fun getAll(): List<Album> {
         return this.albumDAO.getAll()
     }
 
-    override fun add() {
-        TODO("Not yet implemented")
+    fun getFavorites(): List<Album> {
+        return this.albumDAO.getFavorites();
+    }
+
+    fun add(album: Album): Album {
+        var albumInBase: Album = this.albumDAO.getById(artistId = album.id)
+        val isPresent: Boolean = albumInBase === null;
+
+        if (isPresent) {
+            println("add -> ${album.id} -> ${album.favorite}")
+            this.albumDAO.insertAlbum(album)
+        } else {
+            if (album.favorite === null)
+                album.favorite = albumInBase.favorite
+            println("update -> ${album.id} -> ${album.favorite}")
+
+            this.albumDAO.updateAlbum(album)
+        }
+
+        albumInBase = this.albumDAO.getById(artistId = album.id)
+        println(albumInBase)
+        return albumInBase
     }
 }

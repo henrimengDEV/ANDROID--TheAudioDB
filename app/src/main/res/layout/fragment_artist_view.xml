@@ -29,9 +29,6 @@
             tools:ignore="ContentDescription"
             tools:layout_editor_absoluteX="1dp" />
 
-
-
-
         <ImageView
             android:id="@+id/artist_view_back"
             android:layout_width="wrap_content"
@@ -51,13 +48,15 @@
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
 
-
         <ImageView
             android:id="@+id/artist_view_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:background="@drawable/circle"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintRight_toRightOf="@id/artist_view_img"
             app:layout_constraintTop_toTopOf="@id/app_guideline_top" />
 
@@ -67,9 +66,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="11dp"
             android:layout_marginBottom="11dp"
-            app:layout_constraintRight_toRightOf="@id/artist_view_like"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="@id/artist_view_like"
-            />
+            app:layout_constraintRight_toRightOf="@id/artist_view_like" />
 
 
         <LinearLayout

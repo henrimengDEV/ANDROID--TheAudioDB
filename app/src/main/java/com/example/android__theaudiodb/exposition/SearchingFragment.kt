@@ -31,7 +31,7 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
 
     private var queryTextListener: SearchView.OnQueryTextListener? = null
 
-    var searchInput: String = ""
+    var searchInput: String = "Ed sheeran"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         FileUtils.showMenu(view)
@@ -101,20 +101,20 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
         val albumsRecyclerView = view.findViewById<RecyclerView>(R.id.searching_albums)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                if (searchInput.isNotEmpty())
-                    albumsViewModel.getAlbumsByArtistName(searchInput)
+                albumsViewModel.getAlbumsByArtistName(searchInput)
+                artistsViewModel.getArtist(searchInput)
             }
         }
         albumsViewModel.albums.observe(viewLifecycleOwner) {
             albumsRecyclerView.apply {
                 if (it != null) {
-                adapter = AlbumsRecyclerViewAdapter(it, "SearchingFragment")
-                layoutManager = LinearLayoutManager(activity)
+                    adapter = AlbumsRecyclerViewAdapter(it, "SearchingFragment")
+                    layoutManager = LinearLayoutManager(activity)
                 }
             }
         }
         albumsViewModel.errorMessage.observe(viewLifecycleOwner) {
-            Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
+//            Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
             albumsRecyclerView.adapter = AlbumsRecyclerViewAdapter(listOf(), "SearchingFragment")
         }
         albumsViewModel.loading.observe(viewLifecycleOwner) {

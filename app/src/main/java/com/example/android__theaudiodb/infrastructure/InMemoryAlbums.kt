@@ -19,7 +19,7 @@ object InMemoryAlbums : Albums {
         return this.albums
     }
 
-    override fun add() {
+    override fun add(album: Album) {
         TODO("Not yet implemented")
     }
 
