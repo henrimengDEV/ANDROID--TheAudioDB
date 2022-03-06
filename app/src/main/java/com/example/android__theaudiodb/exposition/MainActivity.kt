@@ -4,8 +4,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.room.Room
 import com.example.android__theaudiodb.R
+import com.example.android__theaudiodb.infrastructure.sqlite.AppDatabase
+import com.example.android__theaudiodb.infrastructure.sqlite.entity.ArtistEntity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +21,16 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             navHost.navController
         )
 
+        GlobalScope.launch {
+            val db = Room.databaseBuilder(
+                applicationContext,
+                AppDatabase::class.java, "database-name"
+            ).build()
+
+            val artistDao = db.artistDAO()
+            println(artistDao.getAll())
+            println(artistDao.getById(1))
+        }
     }
 
     // coroutine -> DTO -> persistence en BDD

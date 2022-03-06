@@ -6,16 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.domain.artist.Artist
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbumsRepository
 import com.example.android__theaudiodb.infrastructure.InMemoryArtistsRepository
-import com.example.android__theaudiodb.infrastructure.SQLite.DatabaseManager
-import com.example.android__theaudiodb.infrastructure.SQLite.entity.ArtistEntity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {

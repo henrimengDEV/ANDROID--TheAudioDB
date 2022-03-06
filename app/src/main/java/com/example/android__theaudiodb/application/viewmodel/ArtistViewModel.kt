@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.example.android__theaudiodb.domain.artist.Artist
 import com.example.android__theaudiodb.domain.artist.ArtistAdapter
 import com.example.android__theaudiodb.infrastructure.APIRepository
-import com.example.android__theaudiodb.infrastructure.SQLite.DatabaseManager
 import kotlinx.coroutines.*
 
 class ArtistViewModel(): ViewModel() {
