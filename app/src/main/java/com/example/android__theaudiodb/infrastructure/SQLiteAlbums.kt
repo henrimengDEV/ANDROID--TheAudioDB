@@ -37,7 +37,6 @@ class SQLiteAlbums @Inject constructor(private val albumDAO: AlbumDAO) {
         }
 
         albumInBase = this.albumDAO.getById(artistId = album.id)
-        println(albumInBase)
         return albumInBase
     }
 }

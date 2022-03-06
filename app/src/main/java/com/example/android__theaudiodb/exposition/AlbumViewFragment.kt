@@ -3,6 +3,7 @@ package com.example.android__theaudiodb.exposition
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -63,7 +64,7 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
             .into(view.findViewById<ImageView>(R.id.album_view_img))
 
         if (this.album?.likes === null || this.album?.score === null) {
-            view.findViewById<TextView>(R.id.album_view_notation).visibility = View.GONE
+            view.findViewById<LinearLayout>(R.id.album_view_notation).visibility = View.GONE
         } else {
             view.findViewById<TextView>(R.id.album_view_votes_number).text =
                 String.format(getString(R.string.votes), this.album?.likes)
