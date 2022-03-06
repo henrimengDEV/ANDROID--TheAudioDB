@@ -1,17 +1,22 @@
-package com.example.android__theaudiodb.application.viewmodel
+package com.example.android__theaudiodb.exposition.shared.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.android__theaudiodb.domain.artist.Artist
 import com.example.android__theaudiodb.domain.artist.ArtistAdapter
 import com.example.android__theaudiodb.infrastructure.APIRepository
+import com.example.android__theaudiodb.infrastructure.SQLiteAlbumsRepository
+import com.example.android__theaudiodb.infrastructure.SQLiteArtistsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
-class ArtistViewModel(): ViewModel() {
+@HiltViewModel
+class ArtistViewModel @Inject constructor(private val artistsRepository: SQLiteArtistsRepository): ViewModel() {
     val errorMessage = MutableLiveData<String>()
     val artist = MutableLiveData<List<Artist>>()
     var job: Job? = null
-    val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")
     }
     val loading = MutableLiveData<Boolean>()

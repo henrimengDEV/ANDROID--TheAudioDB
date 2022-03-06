@@ -6,6 +6,7 @@ class AlbumAdapter {
     companion object {
         fun adapt(source: AlbumDTO): Album {
             return Album(
+                source.idAlbum,
                 source.strAlbum,
                 source.strGenre,
                 source.strDescription,

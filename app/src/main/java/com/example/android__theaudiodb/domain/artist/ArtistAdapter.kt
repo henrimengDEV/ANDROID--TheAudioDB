@@ -6,6 +6,7 @@ class ArtistAdapter {
     companion object{
         fun adapt(source: ArtistDTO): Artist {
             return Artist(
+                source.idArtist,
                 source.strArtist,
                 source.strGenre,
                 source.strBiographyEN,

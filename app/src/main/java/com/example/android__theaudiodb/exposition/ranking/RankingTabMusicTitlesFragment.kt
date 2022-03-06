@@ -12,11 +12,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.application.viewmodel.TracksViewModel
+import com.example.android__theaudiodb.exposition.shared.viewmodel.TracksViewModel
 import com.example.android__theaudiodb.exposition.shared.adapter.TracksRecyclerViewAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class RankingTabMusicTitlesFragment : Fragment(R.layout.fragment_ranking_title) {
 
     private val viewModel: TracksViewModel by activityViewModels()

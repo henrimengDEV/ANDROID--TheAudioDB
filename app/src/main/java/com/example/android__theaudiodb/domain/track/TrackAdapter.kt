@@ -6,7 +6,7 @@ class TrackAdapter {
     companion object {
         fun adapt(source: TrackDTO): Track {
             return Track(
-                source.idTrack,
+                source.idTrack.toLong(),
                 source.idAlbum,
                 source.idArtist,
                 source.idLyric,

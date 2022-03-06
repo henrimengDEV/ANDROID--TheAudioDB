@@ -3,7 +3,7 @@ package com.example.android__theaudiodb.application.dto
 
 
 data class ArtistDTO (
-    var idArtist           : String? = null,
+    var idArtist           : Long,
     var strArtist          : String? = null,
     var strArtistStripped  : String? = null,
     var strArtistAlternate : String? = null,

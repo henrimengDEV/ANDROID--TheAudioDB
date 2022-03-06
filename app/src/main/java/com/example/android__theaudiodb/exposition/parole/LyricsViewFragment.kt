@@ -7,7 +7,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.android__theaudiodb.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LyricsViewFragment : Fragment(R.layout.fragment_lyrics_view) {
     private var sourceDestination: String? = null
 

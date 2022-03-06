@@ -15,13 +15,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.application.viewmodel.AlbumsViewModel
-import com.example.android__theaudiodb.application.viewmodel.ArtistViewModel
+import com.example.android__theaudiodb.exposition.shared.viewmodel.AlbumsViewModel
+import com.example.android__theaudiodb.exposition.shared.viewmodel.ArtistViewModel
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class SearchingFragment : Fragment(R.layout.fragment_searching) {
 
     private val albumsViewModel: AlbumsViewModel by activityViewModels()

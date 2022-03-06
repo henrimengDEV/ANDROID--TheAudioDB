@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 
 data class AlbumDTO(
-    var idAlbum: String? = null,
+    var idAlbum: Long,
     var idArtist: String? = null,
     var idLabel: String? = null,
     var strAlbum: String? = null,

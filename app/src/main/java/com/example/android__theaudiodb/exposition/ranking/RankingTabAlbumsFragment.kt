@@ -12,10 +12,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
-import com.example.android__theaudiodb.application.viewmodel.AlbumsViewModel
+import com.example.android__theaudiodb.exposition.shared.viewmodel.AlbumsViewModel
 import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerViewAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class RankingTabAlbumsFragment : Fragment(R.layout.fragment_ranking_album) {
 
     private val viewModel: AlbumsViewModel by activityViewModels()

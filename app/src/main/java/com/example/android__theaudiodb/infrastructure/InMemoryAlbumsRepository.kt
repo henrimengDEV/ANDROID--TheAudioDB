@@ -6,8 +6,8 @@ import com.example.android__theaudiodb.domain.album.Albums
 object InMemoryAlbumsRepository : Albums {
 
     private val albums: List<Album> = listOf(
-        Album(name = "Coldplay", descriptionFR = "France"),
-        Album(name = "foo", descriptionFR = "France"),
+        Album(id = 1, name = "Coldplay", descriptionFR = "France"),
+        Album(id = 2, name = "foo", descriptionFR = "France"),
     )
 
     override fun getByName(name: String): Album? {

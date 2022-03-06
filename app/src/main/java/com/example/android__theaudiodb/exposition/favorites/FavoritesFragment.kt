@@ -10,8 +10,9 @@ import com.example.android__theaudiodb.exposition.shared.adapter.AlbumsRecyclerV
 import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbumsRepository
 import com.example.android__theaudiodb.infrastructure.InMemoryArtistsRepository
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setUpArtistsRecyclerView(view)

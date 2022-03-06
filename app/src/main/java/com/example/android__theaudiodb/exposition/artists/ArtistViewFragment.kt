@@ -14,7 +14,9 @@ import com.example.android__theaudiodb.exposition.shared.adapter.ArtistsRecycler
 import com.example.android__theaudiodb.exposition.shared.adapter.FileUtils
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbumsRepository
 import com.example.android__theaudiodb.infrastructure.InMemoryArtistsRepository
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     private var sourceDestination: String? = null
