@@ -39,9 +39,11 @@ class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAl
     }
 
     fun getFavoritesAlbums() {
+        loading.value = true
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+        val favoriteAlbums: List<Album> = albumsRepository.getFavorites()
             withContext(Dispatchers.Main) {
-                albums.postValue(albumsRepository.getFavorites())
+                albums.postValue(favoriteAlbums)
                 println(albums)
                 loading.value = false
             }

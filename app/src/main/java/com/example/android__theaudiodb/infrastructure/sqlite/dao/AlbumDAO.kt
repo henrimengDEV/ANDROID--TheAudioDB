@@ -15,7 +15,7 @@ interface AlbumDAO {
     @Query("SELECT * FROM Album WHERE name = :artistName")
     fun getByName(artistName: String): Album
 
-    @Query("SELECT * FROM Album WHERE favorite = 'true'")
+    @Query("SELECT * FROM Album WHERE favorite = 1")
     fun getFavorites(): List<Album>
 
     @Update

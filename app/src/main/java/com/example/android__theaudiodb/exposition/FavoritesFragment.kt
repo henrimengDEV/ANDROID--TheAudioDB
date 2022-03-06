@@ -48,7 +48,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         }
         albumsViewModel.albums.observe(viewLifecycleOwner) {
             println(it)
-            view.findViewById<RecyclerView>(R.id.album_view_albums).apply {
+            view.findViewById<RecyclerView>(R.id.favorites_albums).apply {
                 adapter = AlbumsRecyclerViewAdapter(it, "FavoritesFragment")
                 layoutManager = LinearLayoutManager(activity)
             }
