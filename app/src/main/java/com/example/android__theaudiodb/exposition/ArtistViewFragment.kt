@@ -5,15 +5,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.domain.artist.Artist
-import com.example.android__theaudiodb.domain.track.Track
 import com.example.android__theaudiodb.exposition.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.common.FileUtils
+import com.example.android__theaudiodb.exposition.viewmodel.ArtistViewModel
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
 import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 import com.squareup.picasso.MemoryPolicy
@@ -25,11 +26,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     private var artist: Artist? = null
-    private var like: Boolean = false
+    private val artistViewModel: ArtistViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        artist = arguments?.get("artist") as Artist?
-
+        setUpArtist()
         FileUtils.hideMenu(view)
         setUpAlbumsRecyclerView(view)
         setUpFavTracksRecyclerView(view)
@@ -39,8 +39,14 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
         FileUtils.hideMenu(view)
     }
 
+    private fun setUpArtist() {
+        artist = arguments?.get("artist") as Artist?
+        if (artist?.favorite === null)
+            this.artist?.favorite = false
+    }
+
     private fun setUpView(view: View) {
-        when(like){
+        when(artist?.favorite){
             true -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_on)
             false -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_off)
         }
@@ -62,14 +68,20 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     private fun setUpLikeBtn(view: View) {
         view.findViewById<ImageView>(R.id.artist_view_like).setOnClickListener {
-            this.like = !this.like
+            this.artist?.favorite = !this.artist?.favorite!!
 
-            when(like){
-                true -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_on)
-                false -> view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_off)
+            when (artist?.favorite) {
+                true -> {
+                    artistViewModel.updateArtist(this.artist!!)
+                    view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_on)
+                }
+                false -> {
+
+                    artistViewModel.updateArtist(this.artist!!)
+                    view.findViewById<ImageView>(R.id.artist_view_heart).setImageResource(R.drawable.like_off)
+                }
             }
         }
-
     }
 
 

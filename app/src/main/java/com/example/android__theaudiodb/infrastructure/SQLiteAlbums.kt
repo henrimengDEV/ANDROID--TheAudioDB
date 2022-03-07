@@ -22,7 +22,7 @@ class SQLiteAlbums @Inject constructor(private val albumDAO: AlbumDAO) {
     }
 
     fun add(album: Album): Album {
-        var albumInBase: Album = this.albumDAO.getById(artistId = album.id)
+        var albumInBase: Album = this.albumDAO.getById(albumId = album.id)
         val isPresent: Boolean = albumInBase === null;
 
         if (isPresent) {
@@ -36,7 +36,7 @@ class SQLiteAlbums @Inject constructor(private val albumDAO: AlbumDAO) {
             this.albumDAO.updateAlbum(album)
         }
 
-        albumInBase = this.albumDAO.getById(artistId = album.id)
+        albumInBase = this.albumDAO.getById(albumId = album.id)
         return albumInBase
     }
 }

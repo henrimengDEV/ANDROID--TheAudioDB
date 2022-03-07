@@ -18,6 +18,7 @@ class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAl
     val errorMessage = MutableLiveData<String>()
     val albums = MutableLiveData<List<Album>>()
     var job: Job? = null
+
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")
     }
@@ -54,7 +55,8 @@ class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAl
         loading.value = true
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
             val response = APIRepository().getAllAlbumsByArtistName(artistName)
-            val responseAlbums: List<Album>? = response.body()?.albums?.asFlow()?.map { albumsRepository.add(AlbumAdapter.adapt(it)) }?.toList()
+            val responseAlbums: List<Album>? = response.body()?.albums?.asFlow()?.map {
+                albumsRepository.add(AlbumAdapter.adapt(it)) }?.toList()
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful && response.body()?.albums != null) {

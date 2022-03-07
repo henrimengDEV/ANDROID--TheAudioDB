@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.exposition.common.FileUtils
 import com.example.android__theaudiodb.exposition.viewmodel.AlbumsViewModel
-import com.example.android__theaudiodb.exposition.viewmodel.ArtistViewModel
 import com.example.android__theaudiodb.exposition.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.adapter.ArtistsRecyclerViewAdapter
+import com.example.android__theaudiodb.exposition.viewmodel.ArtistViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 class SearchingFragment : Fragment(R.layout.fragment_searching) {
 
     private val albumsViewModel: AlbumsViewModel by activityViewModels()
-    private val artistsViewModel: ArtistViewModel by activityViewModels()
+    private val artistViewModel: ArtistViewModel by activityViewModels()
 
     private var queryTextListener: SearchView.OnQueryTextListener? = null
 
@@ -37,7 +37,6 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
         FileUtils.showMenu(view)
         setUpArtistsRecyclerView(view)
         setUpAlbumsRecyclerView(view)
-
         val searchView: SearchView = view.findViewById<SearchView>(R.id.search_bar)
         val searchManager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
@@ -73,10 +72,10 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 if (searchInput.isNotEmpty())
-                    artistsViewModel.getArtist(searchInput)
+                    artistViewModel.getArtist(searchInput)
             }
         }
-        artistsViewModel.artist.observe(viewLifecycleOwner) {
+        artistViewModel.artist.observe(viewLifecycleOwner) {
             artistRecyclerView.apply {
                 if (it != null) {
                     adapter = ArtistsRecyclerViewAdapter(it, "SearchingFragment")
@@ -84,11 +83,11 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
                 }
             }
         }
-        artistsViewModel.errorMessage.observe(viewLifecycleOwner) {
-            Toast.makeText(context?.applicationContext, it, Toast.LENGTH_LONG).show()
+        artistViewModel.errorMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(context?.applicationContext, it, Toast.LENGTH_SHORT).show()
             artistRecyclerView.adapter = AlbumsRecyclerViewAdapter(listOf(), "SearchingFragment")
         }
-        artistsViewModel.loading.observe(viewLifecycleOwner) {
+        artistViewModel.loading.observe(viewLifecycleOwner) {
             if (it)
                 loadingProgress.visibility = View.VISIBLE
             else
@@ -102,7 +101,7 @@ class SearchingFragment : Fragment(R.layout.fragment_searching) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 albumsViewModel.getAlbumsByArtistName(searchInput)
-                artistsViewModel.getArtist(searchInput)
+                artistViewModel.getArtist(searchInput)
             }
         }
         albumsViewModel.albums.observe(viewLifecycleOwner) {

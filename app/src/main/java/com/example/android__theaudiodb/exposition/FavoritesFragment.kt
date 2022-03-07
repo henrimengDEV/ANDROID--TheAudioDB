@@ -14,10 +14,8 @@ import com.example.android__theaudiodb.R
 import com.example.android__theaudiodb.exposition.common.FileUtils
 import com.example.android__theaudiodb.exposition.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.adapter.ArtistsRecyclerViewAdapter
-import com.example.android__theaudiodb.exposition.adapter.TracksRecyclerViewAdapter
-import com.example.android__theaudiodb.exposition.viewmodel.AlbumViewModel
 import com.example.android__theaudiodb.exposition.viewmodel.AlbumsViewModel
-import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
+import com.example.android__theaudiodb.exposition.viewmodel.ArtistViewModel
 import com.example.android__theaudiodb.infrastructure.InMemoryArtists
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -26,6 +24,7 @@ import kotlinx.coroutines.launch
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
     private val albumsViewModel: AlbumsViewModel by activityViewModels()
+    private val artistViewModel: ArtistViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         FileUtils.showMenu(view)
@@ -34,10 +33,30 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
     }
 
     private fun setUpArtistsRecyclerView(view: View) {
-        view.findViewById<RecyclerView>(R.id.favorites_artists).apply {
-            adapter = ArtistsRecyclerViewAdapter(InMemoryArtists.getAll(), "FavoritesFragment")
-            layoutManager = LinearLayoutManager(activity)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                artistViewModel.getFavoritesArtist()
+            }
         }
+        artistViewModel.artist.observe(viewLifecycleOwner) {
+            view.findViewById<RecyclerView>(R.id.favorites_artists).apply {
+                adapter = ArtistsRecyclerViewAdapter(it, "FavoritesFragment")
+                layoutManager = LinearLayoutManager(activity)
+            }
+        }
+
+        artistViewModel.errorMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }
+        artistViewModel.loading.observe(viewLifecycleOwner) {
+//            if (it)
+//                loadingProgress.visibility = View.VISIBLE
+//            else
+//                loadingProgress.visibility = View.INVISIBLE
+        }
+
+
+
     }
 
     private fun setUpAlbumsRecyclerView(view: View) {
@@ -47,7 +66,6 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
             }
         }
         albumsViewModel.albums.observe(viewLifecycleOwner) {
-            println(it)
             view.findViewById<RecyclerView>(R.id.favorites_albums).apply {
                 adapter = AlbumsRecyclerViewAdapter(it, "FavoritesFragment")
                 layoutManager = LinearLayoutManager(activity)

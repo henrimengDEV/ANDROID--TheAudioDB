@@ -16,8 +16,9 @@ data class Artist(
     @ColumnInfo(name = "biography_fr") val biographyFR: String? = null,
     @ColumnInfo(name = "country") val country: String? = null,
     @ColumnInfo(name = "artist_logo_url") val artistLogoURL: String? = null,
+    @ColumnInfo(name = "favorite") var favorite: Boolean? = null
 ) : Parcelable {
     override fun toString(): String {
-        return "Artist(id=$id, name=$name, genre=$genre, biographyEN=$biographyEN, biographyFR=$biographyFR, country=$country, artistLogoURL=$artistLogoURL)"
+        return "Artist(id=$id, name=$name, genre=$genre, biographyEN=$biographyEN, biographyFR=$biographyFR, country=$country, artistLogoURL=$artistLogoURL, favorite=$favorite)"
     }
 }

@@ -9,11 +9,11 @@ interface AlbumDAO {
     @Query("SELECT * FROM Album")
     fun getAll(): List<Album>
 
-    @Query("SELECT * FROM Album WHERE id = :artistId")
-    fun getById(artistId: Long): Album
+    @Query("SELECT * FROM Album WHERE id = :albumId")
+    fun getById(albumId: Long): Album
 
-    @Query("SELECT * FROM Album WHERE name = :artistName")
-    fun getByName(artistName: String): Album
+    @Query("SELECT * FROM Album WHERE name = :albumName")
+    fun getByName(albumName: String): Album
 
     @Query("SELECT * FROM Album WHERE favorite = 1")
     fun getFavorites(): List<Album>
