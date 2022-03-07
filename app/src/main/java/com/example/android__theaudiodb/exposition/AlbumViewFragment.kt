@@ -98,7 +98,7 @@ class AlbumViewFragment : Fragment(R.layout.fragment_album_view) {
     private fun setUpRecyclerView(view: View) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                tracksViewModel.getTopFiftyTracks()
+                album?.let { tracksViewModel.getTracksFromAlbum(it.id) }
             }
         }
         tracksViewModel.tracks.observe(viewLifecycleOwner) {

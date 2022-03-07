@@ -10,9 +10,9 @@ import kotlinx.parcelize.Parcelize
 @Entity
 class Track(
     @PrimaryKey(autoGenerate = true) val id: Long,
-    @ColumnInfo(name = "id_album") val idAlbum: Int?,
-    @ColumnInfo(name = "id_artist") val idArtist: Int?,
-    @ColumnInfo(name = "id_lyric") val idLyric: Int?,
+    @ColumnInfo(name = "id_album") val idAlbum: Long?,
+    @ColumnInfo(name = "id_artist") val idArtist: Long?,
+    @ColumnInfo(name = "id_lyric") val idLyric: Long?,
     @ColumnInfo(name = "name") val name: String?,
     @ColumnInfo(name = "album") val album: String?,
     @ColumnInfo(name = "artist") val artist: String?,

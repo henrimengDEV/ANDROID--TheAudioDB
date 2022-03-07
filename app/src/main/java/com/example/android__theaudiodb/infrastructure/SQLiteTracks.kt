@@ -5,8 +5,6 @@ import com.example.android__theaudiodb.infrastructure.sqlite.dao.TrackDAO
 import javax.inject.Inject
 import javax.inject.Singleton
 
-//TODO implement ArtistRepo mais faut gérer ArtistEntity -> Artist
-
 @Singleton
 class SQLiteTracks @Inject constructor(private val trackDAO: TrackDAO) {
 
@@ -16,5 +14,13 @@ class SQLiteTracks @Inject constructor(private val trackDAO: TrackDAO) {
 
     fun getAll(): List<Track> {
         return this.trackDAO.getAll()
+    }
+
+    fun getAllByArtistId(id: Long): List<Track> {
+        return this.trackDAO.getAllByArtistId(id)
+    }
+
+    fun getAllByAlbumId(id: Long): List<Track> {
+        return this.trackDAO.getAllByAlbumId(id)
     }
 }

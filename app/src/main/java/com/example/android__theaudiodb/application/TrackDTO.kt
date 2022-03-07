@@ -3,10 +3,10 @@ package com.example.android__theaudiodb.application
 import com.google.gson.annotations.SerializedName
 
 data class TrackDTO(
-    var idTrack: Int,
-    var idAlbum: Int,
-    var idArtist: Int,
-    var idLyric: Int,
+    var idTrack: Long,
+    var idAlbum: Long,
+    var idArtist: Long,
+    var idLyric: Long,
     var strTrack: String,
     var strAlbum: String,
     var strArtist: String,
@@ -55,4 +55,8 @@ data class TrackDTO(
 
 class LovedTracksDTO(
     @SerializedName("loved") var lovedTracks: List<TrackDTO>? = null
+)
+
+class TracksDTO(
+    @SerializedName("track") var tracks: List<TrackDTO>? = null
 )

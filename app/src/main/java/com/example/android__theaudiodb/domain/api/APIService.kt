@@ -1,9 +1,6 @@
 package com.example.android__theaudiodb.domain.api
 
-import com.example.android__theaudiodb.application.AlbumsDTO
-import com.example.android__theaudiodb.application.ArtistsDTO
-import com.example.android__theaudiodb.application.LovedAlbumsDTO
-import com.example.android__theaudiodb.application.LovedTracksDTO
+import com.example.android__theaudiodb.application.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -34,6 +31,9 @@ interface APIService {
 
     @GET("v1/json/523532/searchalbum.php")
     suspend fun retrieveAllAlbumsByArtistName(@Query("s") artistName: String): Response<AlbumsDTO>
+
+    @GET("v1/json/523532/track.php")
+    suspend fun retrieveAllTracksFromAlbumId(@Query("m") albumId: Long): Response<TracksDTO>
 
     @GET("v1/json/523532/mostloved.php?format=track")
     suspend fun retrieveTopFiftyMusicOfAllTime(): Response<LovedTracksDTO>

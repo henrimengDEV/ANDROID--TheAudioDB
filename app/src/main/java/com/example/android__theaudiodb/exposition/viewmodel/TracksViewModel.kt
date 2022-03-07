@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.toList
 import javax.inject.Inject
 
 @HiltViewModel
-class TracksViewModel @Inject constructor(private val tracksRepository: SQLiteTracks): ViewModel() {
+class TracksViewModel @Inject constructor(private val tracksRepository: SQLiteTracks) : ViewModel() {
     val errorMessage = MutableLiveData<String>()
     val tracks = MutableLiveData<List<Track>>()
     var job: Job? = null
@@ -29,7 +29,22 @@ class TracksViewModel @Inject constructor(private val tracksRepository: SQLiteTr
             val response = APIRepository().getTopFiftyTracksOfAllTime()
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    tracks.postValue(response.body()?.lovedTracks?.asFlow()?.map{ TrackAdapter.adapt(it)}?.toList())
+                    tracks.postValue(response.body()?.lovedTracks?.asFlow()?.map { TrackAdapter.adapt(it) }?.toList())
+                    loading.value = false
+                } else {
+                    onError("Error : ${response.message()} ")
+                }
+            }
+        }
+    }
+
+    fun getTracksFromAlbum(id: Long) {
+        loading.value = true
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = APIRepository().getAllTracksFromAlbumId(id)
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful) {
+                    tracks.postValue(response.body()?.tracks?.asFlow()?.map { TrackAdapter.adapt(it) }?.toList())
                     loading.value = false
                 } else {
                     onError("Error : ${response.message()} ")
@@ -40,7 +55,7 @@ class TracksViewModel @Inject constructor(private val tracksRepository: SQLiteTr
 
     private fun onError(message: String) {
         errorMessage.value = message
-        loading.value = false
+//        loading.value = false
     }
 
     override fun onCleared() {
