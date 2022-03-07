@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +18,7 @@ import com.example.android__theaudiodb.domain.artist.Artist
 import com.example.android__theaudiodb.exposition.adapter.AlbumsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.adapter.ArtistsRecyclerViewAdapter
 import com.example.android__theaudiodb.exposition.common.FileUtils
+import com.example.android__theaudiodb.exposition.viewmodel.AlbumsViewModel
 import com.example.android__theaudiodb.exposition.viewmodel.ArtistViewModel
 import com.example.android__theaudiodb.infrastructure.InMemoryAlbums
 import com.example.android__theaudiodb.infrastructure.InMemoryArtists
@@ -21,12 +26,15 @@ import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     private var artist: Artist? = null
     private val artistViewModel: ArtistViewModel by activityViewModels()
+    private val albumsViewModel: AlbumsViewModel by activityViewModels()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setUpArtist()
@@ -94,10 +102,26 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
 
     // Recycler
     private fun setUpAlbumsRecyclerView(view: View) {
-        view.findViewById<RecyclerView>(R.id.artist_albums).apply {
-            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll(), "ArtistViewFragment")
-            layoutManager = LinearLayoutManager(activity)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                println(artist?.id)
+                albumsViewModel.getAllAlbumsByArtistId(artist?.id!!)
+            }
         }
+        albumsViewModel.albums.observe(viewLifecycleOwner) {
+            view.findViewById<RecyclerView>(R.id.artist_albums).apply {
+                adapter = AlbumsRecyclerViewAdapter(it, "ArtistViewFragment")
+                layoutManager = LinearLayoutManager(activity)
+            }
+        }
+
+
+
+
+//        view.findViewById<RecyclerView>(R.id.artist_albums).apply {
+//            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll(), "ArtistViewFragment")
+//            layoutManager = LinearLayoutManager(activity)
+//        }
     }
 
     private fun setUpFavTracksRecyclerView(view: View) {

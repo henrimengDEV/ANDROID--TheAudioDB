@@ -69,6 +69,24 @@ class AlbumsViewModel @Inject constructor(private val albumsRepository: SQLiteAl
         }
     }
 
+    fun getAllAlbumsByArtistId(artistId: Long) {
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            val response = APIRepository().getAllAlbumsByArtistId(artistId)
+            val responseAlbums: List<Album>? = response.body()?.albums?.asFlow()?.map {
+                albumsRepository.add(AlbumAdapter.adapt(it)) }?.toList()
+
+            withContext(Dispatchers.Main) {
+                if (response.isSuccessful && response.body()?.albums != null) {
+                    albums.postValue(responseAlbums!!)
+                } else {
+                    onError("Nothing found !")
+                }
+            }
+        }
+    }
+
+
+
     private fun onError(message: String) {
         errorMessage.postValue(message)
 //        loading.value = false

@@ -15,6 +15,7 @@ import javax.inject.Inject
 class ArtistViewModel @Inject constructor(private val artistsRepository: SQLiteArtists): ViewModel() {
     val errorMessage = MutableLiveData<String>()
     val artist = MutableLiveData<List<Artist>>()
+
     var job: Job? = null
     private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
         onError("Exception handled: ${throwable.localizedMessage}")

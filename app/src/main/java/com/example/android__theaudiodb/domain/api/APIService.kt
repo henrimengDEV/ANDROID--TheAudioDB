@@ -32,6 +32,9 @@ interface APIService {
     @GET("v1/json/523532/searchalbum.php")
     suspend fun retrieveAllAlbumsByArtistName(@Query("s") artistName: String): Response<AlbumsDTO>
 
+    @GET("v1/json/523532/album.php")
+    suspend fun retrieveAllAlbumsByArtistId(@Query("i") artistId: Long): Response<AlbumsDTO>
+
     @GET("v1/json/523532/track.php")
     suspend fun retrieveAllTracksFromAlbumId(@Query("m") albumId: Long): Response<TracksDTO>
 

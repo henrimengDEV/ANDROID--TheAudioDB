@@ -14,4 +14,6 @@ class APIRepository {
 
     suspend fun getAllTracksFromAlbumId(albumId: Long) = APIService.getInstance().retrieveAllTracksFromAlbumId(albumId)
 
+    suspend fun getAllAlbumsByArtistId(artistId: Long) = APIService.getInstance().retrieveAllAlbumsByArtistId(artistId)
+
 }
