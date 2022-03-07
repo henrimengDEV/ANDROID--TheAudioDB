@@ -69,7 +69,6 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
         view.findViewById<TextView>(R.id.artist_view_description_name).text = this.artist?.name// Artiste nom
         view.findViewById<TextView>(R.id.artist_view_description_city).text = this.artist?.country // Artiste ville
         view.findViewById<TextView>(R.id.artist_view_bio).text = this.artist?.biographyFR // Artiste bio
-        view.findViewById<TextView>(R.id.artist_view_album_count).text = "Album (" + 12 + ")" // Artiste nombre d'album
 
 
     }
@@ -104,24 +103,17 @@ class ArtistViewFragment : Fragment(R.layout.fragment_artist_view) {
     private fun setUpAlbumsRecyclerView(view: View) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                println(artist?.id)
                 albumsViewModel.getAllAlbumsByArtistId(artist?.id!!)
             }
         }
         albumsViewModel.albums.observe(viewLifecycleOwner) {
             view.findViewById<RecyclerView>(R.id.artist_albums).apply {
                 adapter = AlbumsRecyclerViewAdapter(it, "ArtistViewFragment")
+                view.findViewById<TextView>(R.id.artist_view_album_count).text = "Album (" +  it.size + ")" // Artiste nombre d'album
                 layoutManager = LinearLayoutManager(activity)
             }
         }
 
-
-
-
-//        view.findViewById<RecyclerView>(R.id.artist_albums).apply {
-//            adapter = AlbumsRecyclerViewAdapter(InMemoryAlbums.getAll(), "ArtistViewFragment")
-//            layoutManager = LinearLayoutManager(activity)
-//        }
     }
 
     private fun setUpFavTracksRecyclerView(view: View) {
